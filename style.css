@@ -1,0 +1,470 @@
+/*
+Theme Name: Ouatitp Child
+Template: generatepress
+Version: 1.0.0
+*/
+/* =========================
+   TOKENS
+========================= */
+:root {
+  --color-bg: #fffdfa;
+  --color-heading: #221c35;
+  --color-text: #36454f;
+  --color-muted: #6f7b84;
+  --color-accent: #3b1a53;
+  --color-accent-dark: #221c35;
+  --color-warm: #faab18;
+  --color-warm-dark: #bd5727;
+  --color-border: #e7dfd8;
+  --color-surface: #f3ece6;
+
+  --color-ui-hover-bg: rgba(59, 26, 83, 0.05);
+  --color-ui-hover-bg-strong: rgba(59, 26, 83, 0.08);
+}
+
+/* =========================
+   THEME OVERRIDES
+========================= */
+.main-navigation,
+.inside-navigation,
+.site-header {
+  display: none;
+}
+
+.site-info {
+  display: none;
+}
+
+/* =========================
+   LAYOUT FIXES
+========================= */
+.gb-container:last-child,
+.wp-block-columns:last-child,
+.entry-content > .wp-block-columns:last-child {
+  margin-bottom: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+/* =========================
+   CUSTOM NAV
+========================= */
+.oua-nav {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: min(390px, calc(100% - 32px));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease;
+}
+
+body.ui-ready .oua-nav {
+  opacity: 1;
+  visibility: visible;
+}
+
+.oua-nav__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 0 0 0 2px;
+  background: rgba(255, 253, 250, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 18px rgba(34, 28, 53, 0.04);
+  transition:
+    background 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+.oua-nav.is-scrolled .oua-nav__bar {
+  background: rgba(255, 253, 250, 0.9);
+  box-shadow: 0 8px 20px rgba(34, 28, 53, 0.07);
+}
+
+.oua-nav__brand {
+  color: var(--color-heading);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.oua-nav__brand--logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.oua-logo {
+  display: block;
+  height: 24px;
+  width: auto;
+  max-width: 220px;
+}
+
+.oua-logo-shape {
+  fill: var(--color-heading);
+  transition:
+    fill 0.45s ease,
+    opacity 0.45s ease,
+    filter 0.45s ease;
+}
+
+.oua-nav.is-scrolled .oua-logo-shape {
+  fill: var(--color-accent);
+  opacity: 0.98;
+  filter: drop-shadow(0 0 0.4px rgba(59, 26, 83, 0.14));
+}
+
+/* toggle */
+.oua-nav__toggle {
+  width: 60px;
+  min-height: 52px;
+  border: 0;
+  border-left: 1px solid var(--color-border);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+.oua-nav__toggle:focus,
+.oua-nav__toggle:focus-visible,
+.oua-nav__toggle:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.oua-nav:not(.is-open) .oua-nav__toggle {
+  background: transparent;
+}
+
+.oua-nav__toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--color-heading);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    background 0.2s ease;
+}
+
+.oua-nav__toggle:hover,
+.oua-nav__toggle:focus-visible {
+  background: var(--color-ui-hover-bg);
+  outline: none;
+}
+
+.oua-nav__toggle:hover span,
+.oua-nav__toggle:focus-visible span {
+  background: var(--color-accent);
+}
+
+.oua-nav.is-open .oua-nav__toggle {
+  background: var(--color-ui-hover-bg);
+}
+
+.oua-nav.is-open .oua-nav__toggle span {
+  background: var(--color-accent);
+}
+
+.oua-nav.is-open .oua-nav__toggle span:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+
+.oua-nav.is-open .oua-nav__toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.oua-nav.is-open .oua-nav__toggle span:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+/* nav bar tweek */
+.oua-nav__bar,
+.oua-nav__panel {
+  border-radius: 0.875rem;
+}
+
+.oua-nav__bar {
+  overflow: hidden;
+}
+
+/* dropdown */
+.oua-nav__panel {
+  display: none;
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: rgba(255, 253, 250, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 18px rgba(34, 28, 53, 0.06);
+}
+
+.oua-nav.is-open .oua-nav__panel {
+  display: block;
+}
+
+.oua-nav__panel a {
+  display: block;
+  color: var(--color-heading);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  margin: 0 -0.25rem;
+  border-radius: 0.75rem;
+  font-size: 15px;
+  line-height: 1.3;
+  transition:
+    color 0.16s ease,
+    background 0.16s ease;
+}
+
+.oua-nav__panel a:hover,
+.oua-nav__panel a:focus-visible {
+  color: var(--color-accent);
+  background: var(--color-ui-hover-bg);
+  outline: none;
+}
+
+.oua-nav__meta {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+.oua-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-18%, -12%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease, transform 0.18s ease;
+}
+
+.oua-cursor.is-ready {
+  opacity: 1;
+  visibility: visible;
+}
+
+.oua-cursor__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor input,
+body.has-custom-cursor textarea,
+body.has-custom-cursor select,
+body.has-custom-cursor .wp-block-button__link {
+  cursor: none !important;
+}
+
+.cursor-body {
+  fill: #ffffff;
+  transition: fill 0.18s ease;
+}
+
+.cursor-white {
+  fill: #ffffff;
+}
+
+.cursor-none {
+  fill: none;
+}
+
+.cursor-black {
+  fill: #111111;
+}
+
+.cursor-spark-shape {
+  fill: #ffffff;
+  transition: fill 0.18s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.oua-cursor.is-hover {
+  transform: translate(-18%, -12%) scale(1.08);
+}
+
+.oua-cursor.is-hover .cursor-body {
+  fill: var(--color-warm);
+}
+
+.oua-cursor.is-hover .cursor-spark-shape {
+  fill: var(--color-warm-dark);
+}
+
+@keyframes ouaSparkPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+.oua-cursor.is-hover #cursor-spark path:nth-child(1) {
+  animation: ouaSparkPulse 0.55s infinite ease-in-out;
+}
+
+.oua-cursor.is-hover #cursor-spark path:nth-child(2) {
+  animation: ouaSparkPulse 0.65s infinite ease-in-out;
+}
+
+.oua-cursor.is-hover #cursor-spark path:nth-child(3) {
+  animation: ouaSparkPulse 0.5s infinite ease-in-out;
+}
+
+.oua-cursor.is-hover #cursor-spark path:nth-child(4) {
+  animation: ouaSparkPulse 0.6s infinite ease-in-out;
+}
+
+.oua-cursor.is-hover #cursor-spark path:nth-child(5) {
+  animation: ouaSparkPulse 0.58s infinite ease-in-out;
+}
+
+/* =========================
+   UTILITIES
+========================= */
+img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* =========================
+   ACCESSIBILITY / RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  body,
+  body a,
+  body button,
+  body input,
+  body textarea,
+  body select,
+  body .wp-block-button__link {
+    cursor: auto !important;
+  }
+
+  .oua-cursor {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oua-cursor.is-hover #cursor-spark path {
+    animation: none;
+  }
+}
+
+
+/* =========================
+   OUA BUTTON SYSTEM
+========================= */
+.oua-btn .wp-block-button__link,
+.wp-block-button.oua-btn .wp-block-button__link,
+a.oua-btn,
+.oua-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.65rem;
+  padding: 0.68rem 1.2rem;
+  border-radius: 1.3rem;
+  border: 1.15px solid transparent;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  box-shadow: none;
+  transform: none;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* primary */
+.oua-btn--primary .wp-block-button__link,
+.wp-block-button.oua-btn--primary .wp-block-button__link,
+a.oua-btn--primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+.oua-btn--primary .wp-block-button__link:hover,
+.wp-block-button.oua-btn--primary .wp-block-button__link:hover,
+a.oua-btn--primary:hover,
+.oua-btn--primary .wp-block-button__link:focus,
+.wp-block-button.oua-btn--primary .wp-block-button__link:focus,
+a.oua-btn--primary:focus {
+  background: var(--color-accent-dark);
+  color: var(--color-bg);
+  border-color: var(--color-accent-dark);
+}
+
+/* secondary */
+.oua-btn--secondary .wp-block-button__link,
+.wp-block-button.oua-btn--secondary .wp-block-button__link,
+a.oua-btn--secondary {
+  background: transparent;
+  color: var(--color-heading);
+  border-color: var(--color-heading);
+}
+
+.oua-btn--secondary .wp-block-button__link:hover,
+.wp-block-button.oua-btn--secondary .wp-block-button__link:hover,
+a.oua-btn--secondary:hover,
+.oua-btn--secondary .wp-block-button__link:focus,
+.wp-block-button.oua-btn--secondary .wp-block-button__link:focus,
+a.oua-btn--secondary:focus {
+  background: rgba(34, 28, 53, 0.04);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
