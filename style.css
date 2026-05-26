@@ -74,7 +74,7 @@ body.ui-ready .oua-nav {
   align-items: center;
   justify-content: space-between;
   min-height: 52px;
-  padding: 0 0 0 2px;
+  padding: 0 0 0 0.875rem;
   background: rgba(255, 253, 250, 0.72);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -101,7 +101,11 @@ body.ui-ready .oua-nav {
 .oua-nav__brand--logo {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   text-decoration: none;
+  padding-left: 0;
+  margin-left: 0;
+  flex: 0 1 auto;
 }
 
 .oua-logo {
