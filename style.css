@@ -472,3 +472,233 @@ a.oua-btn--secondary:focus {
   color: var(--color-accent);
   border-color: var(--color-accent);
 }
+
+/* =========================
+   WORK — STICKY CENTER + FLOATING GALLERY
+========================= */
+
+.oua-work {
+  position: relative;
+  padding: 8rem 4rem 12rem;
+  overflow: visible;
+}
+
+.oua-work__intro {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 34rem;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 1;
+  will-change: opacity;
+  transition: opacity 0.12s linear;
+}
+
+.oua-work__intro,
+.oua-work__intro * {
+  white-space: normal !important;
+}
+
+.oua-work__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.oua-work__title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--color-heading);
+}
+
+.oua-work__text {
+  margin: 0 auto;
+  max-width: 32rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.oua-work__gallery {
+  position: relative;
+  min-height: 165vh;
+  margin-top: -10rem;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.oua-work__item {
+  position: absolute;
+  display: block;
+  overflow: visible;
+  will-change: transform, opacity;
+  pointer-events: auto;
+  transition:
+    opacity 0.22s ease,
+    filter 0.2 s ease;
+  transform-origin: center center;
+}
+
+.oua-work__item img,
+.oua-work__item figure,
+.oua-work__item .wp-block-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.oua-work__item figure,
+.oua-work__item .wp-block-image {
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+}
+
+.oua-work__item img {
+  object-fit: contain !important;
+}
+
+/* hover na grafikach w galerii */
+.oua-work__item {
+  transition:
+    transform 0.28s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
+  transform-origin: center center;
+}
+
+.oua-work__item:hover {
+  z-index: 20;
+  opacity: 1 !important;
+}
+
+.oua-work__item:hover img {
+  transform: scale(1.22);
+}
+
+.oua-work__item img {
+  transition: transform 0.28s ease;
+}
+
+/* desktop composition */
+.oua-work__item--01 {
+  top: 34rem;
+  left: 10%;
+  width: 7.5rem;
+  z-index: 3;
+}
+
+.oua-work__item--02 {
+  top: 43rem;
+  left: 14%;
+  width: 7rem;
+  z-index: 2;
+  opacity: 0.76;
+}
+
+.oua-work__item--03 {
+  top: 40rem;
+  left: 38%;
+  width: 9rem;
+  z-index: 1;
+  opacity: 0.18;
+}
+
+.oua-work__item--04 {
+  top: 52rem;
+  right: 24%;
+  width: 6.5rem;
+  z-index: 3;
+}
+
+.oua-work__item--05 {
+  top: 45rem;
+  right: 12%;
+  width: 6.25rem;
+  z-index: 2;
+  opacity: 0.68;
+}
+
+.oua-work__item--06 {
+  top: 61rem;
+  right: 8%;
+  width: 5.75rem;
+  z-index: 1;
+  opacity: 0.16;
+}
+
+.oua-work__item--03 img,
+.oua-work__item--06 img {
+  filter: saturate(0.88) brightness(1.05);
+}
+
+/* tablet */
+@media (max-width: 1024px) {
+  .oua-work {
+    padding: 6rem 2rem 7rem;
+  }
+
+  .oua-work__intro {
+    position: relative;
+    top: auto;
+    transform: none;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .oua-work__gallery {
+    min-height: auto;
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    pointer-events: auto;
+  }
+
+  .oua-work__item {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .oua-work {
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  .oua-work__intro {
+    text-align: left;
+    margin: 0 0 2rem;
+  }
+
+  .oua-work__text {
+    margin: 0;
+  }
+
+  .oua-work__gallery {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .oua-work__title {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+}

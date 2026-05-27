@@ -74,3 +74,23 @@ add_action('wp_body_open', function () {
     </div>
 <?php
 });
+
+add_action('wp_head', function () {
+    echo '<meta name="pinterest" content="nopin" description="Pinning is disabled for this site.">' . "\n";
+    echo '<meta name="robots" content="max-image-preview:none">' . "\n";
+});
+
+add_filter('render_block', function ($block_content, $block) {
+    if (
+        !empty($block['blockName']) &&
+        $block['blockName'] === 'core/image'
+    ) {
+        $block_content = preg_replace(
+            '/<img\b(?![^>]*data-pin-nopin=)/',
+            '<img data-pin-nopin="true" ',
+            $block_content
+        );
+    }
+
+    return $block_content;
+}, 10, 2);
