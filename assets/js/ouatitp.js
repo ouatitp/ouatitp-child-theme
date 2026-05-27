@@ -130,9 +130,10 @@
     /* intro fades + scales down */
     const introOpacity = 1 - progress * 1;
     const introScale = 1 - progress * 0.44;
+    const introY = progress * -200
 
     workIntro.style.opacity = introOpacity.toFixed(3);
-    workIntroInner.style.transform = `scale(${introScale.toFixed(3)})`;
+    workIntroInner.style.transform = `translateY(${introY.toFixed(2)}px) scale(${introScale.toFixed(3)})`;
 
     /* floating images drift upward */
     workItems.forEach(function (item) {
