@@ -91,92 +91,100 @@
   }
 
   function initWorkScene() {
-    const workSection = document.querySelector('.oua-work');
-    const workIntro = document.querySelector('.oua-work__intro');
-    const gallery = document.querySelector('.oua-work__gallery');
-    const workItems = document.querySelectorAll('.oua-work__item');
+  const workSection = document.querySelector('.oua-work');
+  const workIntro = document.querySelector('.oua-work__intro');
+  const workIntroInner = document.querySelector('.oua-work__intro-inner') || workIntro;
+  const gallery = document.querySelector('.oua-work__gallery');
+  const workItems = document.querySelectorAll('.oua-work__item');
 
-    if (!workSection || !workIntro || !gallery || !workItems.length) return false;
+  if (!workSection || !workIntro || !gallery || !workItems.length) {
+    return false;
+  }
 
-    function isDesktop() {
-      return window.matchMedia('(min-width: 1025px)').matches;
+  function isDesktop() {
+    return window.matchMedia('(min-width: 1025px)').matches;
+  }
+
+  function resetWorkScene() {
+    workIntro.style.opacity = '';
+    workIntroInner.style.transform = '';
+
+    workItems.forEach(function (item) {
+      item.style.transform = '';
+    });
+  }
+
+  function updateWorkScene() {
+    if (!isDesktop()) {
+      resetWorkScene();
+      return;
     }
 
-    function resetWorkScene() {
-      workIntro.style.opacity = '';
+    const galleryRect = gallery.getBoundingClientRect();
+    const viewportH = window.innerHeight;
+    const travel = Math.max(gallery.offsetHeight - viewportH, 1);
 
-      workItems.forEach(function (item) {
-        item.style.transform = '';
-      });
-    }
+    const scrolled = Math.max(0, Math.min(-galleryRect.top, travel));
+    const progress = scrolled / travel;
 
-    function updateWorkScene() {
-      if (!isDesktop()) {
-        resetWorkScene();
-        return;
+    /* intro fades + scales down */
+    const introOpacity = 1 - progress * 1;
+    const introScale = 1 - progress * 0.44;
+
+    workIntro.style.opacity = introOpacity.toFixed(3);
+    workIntroInner.style.transform = `scale(${introScale.toFixed(3)})`;
+
+    /* floating images drift upward */
+    workItems.forEach(function (item) {
+      let speedY = 0;
+      let speedX = 0;
+
+      if (item.classList.contains('oua-work__item--01')) {
+        speedY = -28;
+        speedX = 5;
       }
 
-      const galleryRect = gallery.getBoundingClientRect();
-      const viewportH = window.innerHeight;
-      const travel = Math.max(gallery.offsetHeight - viewportH, 1);
+      if (item.classList.contains('oua-work__item--02')) {
+        speedY = -40;
+        speedX = -5;
+      }
 
-      const scrolled = Math.max(0, Math.min(-galleryRect.top, travel));
-      const progress = scrolled / travel;
+      if (item.classList.contains('oua-work__item--03')) {
+        speedY = -18;
+        speedX = 8;
+      }
 
-      /* intro stays sticky from CSS, JS only fades it */
-      const introOpacity = 1 - progress * 0.55;
-      workIntro.style.opacity = introOpacity.toFixed(3);
+      if (item.classList.contains('oua-work__item--04')) {
+        speedY = -32;
+        speedX = -7;
+      }
 
-      workItems.forEach(function (item) {
-        let speedY = 0;
-        let speedX = 0;
+      if (item.classList.contains('oua-work__item--05')) {
+        speedY = -22;
+        speedX = 5;
+      }
 
-        if (item.classList.contains('oua-work__item--01')) {
-          speedY = -28;
-          speedX = 5;
-        }
+      if (item.classList.contains('oua-work__item--06')) {
+        speedY = -26;
+        speedX = -4;
+      }
 
-        if (item.classList.contains('oua-work__item--02')) {
-          speedY = -40;
-          speedX = -5;
-        }
+      const x = progress * speedX;
+      const y = progress * speedY;
 
-        if (item.classList.contains('oua-work__item--03')) {
-          speedY = -18;
-          speedX = 8;
-        }
-
-        if (item.classList.contains('oua-work__item--04')) {
-          speedY = -32;
-          speedX = -7;
-        }
-
-        if (item.classList.contains('oua-work__item--05')) {
-          speedY = -22;
-          speedX = 5;
-        }
-
-        if (item.classList.contains('oua-work__item--06')) {
-          speedY = -26;
-          speedX = -4;
-        }
-
-        const x = progress * speedX;
-        const y = progress * speedY;
-
-        item.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      });
-    }
-
-    if (!workSceneBound) {
-      window.addEventListener('scroll', updateWorkScene, { passive: true });
-      window.addEventListener('resize', updateWorkScene);
-      workSceneBound = true;
-    }
-
-    updateWorkScene();
-    return true;
+      item.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
   }
+
+  if (!workSceneBound) {
+    window.addEventListener('scroll', updateWorkScene, { passive: true });
+    window.addEventListener('resize', updateWorkScene);
+    workSceneBound = true;
+  }
+
+  updateWorkScene();
+  return true;
+}
 
   function boot() {
     initCustomUI();
