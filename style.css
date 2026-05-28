@@ -480,14 +480,14 @@ a.oua-btn--secondary:focus {
 .oua-work {
   position: relative;
   padding: 8rem 4rem 12rem;
-  overflow: visible;
+  z-index: 2
 }
 
 .oua-work__intro {
   position: sticky;
   top: 50vh;
   transform: translateY(-50%);
-  z-index: 2;
+  z-index: 4;
   max-width: 34rem;
   margin: 0 auto;
   text-align: center;
@@ -706,5 +706,146 @@ a.oua-btn--secondary:focus {
 
   .oua-work__title {
     font-size: clamp(2rem, 9vw, 3rem);
+  }
+}
+
+/* =========================
+   HERO — SCROLL OUTRO v2
+========================= */
+
+.oua-hero {
+  position: relative;
+  padding: 0 4rem 5rem;
+  min-height: 118vh;
+  overflow: visible !important;
+  z-index: 8;
+}
+
+/* ważne: nic nie ma ucinać ilustracji */
+.oua-hero,
+.oua-hero .wp-block-columns,
+.oua-hero .wp-block-column,
+.oua-hero .gb-container,
+.oua-hero .gb-inside-container,
+.oua-hero__content,
+.oua-hero__art,
+.oua-hero__art-inner {
+  overflow: visible !important;
+}
+
+.oua-hero .wp-block-columns {
+  width: min(1180px, calc(100% - 96px));
+  margin-inline: auto;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.oua-hero__content {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  z-index: 6;
+  max-width: 34rem;
+}
+
+.oua-hero__content-inner {
+  max-width: 32rem;
+  will-change: transform, opacity;
+  transform-origin: center left;
+  transition: transform 0.12s linear, opacity 0.12s linear;
+}
+
+.oua-hero__art {
+  position: relative;
+  min-height: 108vh;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.oua-hero__art-inner {
+  position: absolute;
+  top: 8rem;
+  right: 4%;
+  width: min(25rem, 30vw);
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+  transition:
+    transform 0.12s linear,
+    opacity 0.12s linear,
+    filter 0.12s linear;
+  pointer-events: none;
+}
+
+.oua-hero__art-inner img,
+.oua-hero__art-inner figure,
+.oua-hero__art-inner .wp-block-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.oua-hero__art-inner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1024px) {
+  .oua-hero {
+    min-height: auto;
+    padding: 0 2rem 5rem;
+    overflow: visible !important;
+  }
+
+  .oua-hero .wp-block-columns {
+    width: min(100%, calc(100% - 48px));
+    gap: 2.5rem;
+  }
+
+  .oua-hero__content {
+    position: relative;
+    top: auto;
+    transform: none;
+    max-width: 100%;
+  }
+
+  .oua-hero__content-inner {
+    max-width: 36rem;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .oua-hero__art {
+    min-height: auto;
+  }
+
+  .oua-hero__art-inner {
+    position: absolute;
+    top: 44rem;
+    right: 22%;
+    width: min(25rem, 30vw);
+    will-change: transform, opacity, filter;
+    transform-origin: center center;
+    transition:
+      transform 0.12s linear,
+      opacity 0.12s linear,
+      filter 0.12s linear;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .oua-hero {
+    padding: 0 1.5rem 4rem;
+  }
+
+  .oua-hero__art-inner {
+    max-width: 20rem;
   }
 }

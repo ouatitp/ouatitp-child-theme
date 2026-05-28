@@ -2,6 +2,10 @@
   let uiInitialized = false;
   let workSceneBound = false;
 
+  function easeOutCubic(t) {
+  return 1 - Math.pow(1 - t, 3);
+}
+
   function initCustomUI() {
     if (uiInitialized) return true;
 
@@ -187,8 +191,85 @@
   return true;
 }
 
+function initHeroScene() {
+  const heroSection = document.querySelector('.oua-hero');
+  const heroContent = document.querySelector('.oua-hero__content');
+  const heroContentInner = document.querySelector('.oua-hero__content-inner') || heroContent;
+  const heroArt = document.querySelector('.oua-hero__art');
+  const heroArtInner = document.querySelector('.oua-hero__art-inner');
+
+  if (!heroSection || !heroContent || !heroArt || !heroArtInner) {
+    return false;
+  }
+
+  function isDesktop() {
+    return window.matchMedia('(min-width: 1025px)').matches;
+  }
+
+  function resetHeroScene() {
+    heroContentInner.style.opacity = '';
+    heroContentInner.style.transform = '';
+    heroArtInner.style.opacity = '';
+    heroArtInner.style.transform = '';
+    heroArtInner.style.filter = '';
+  }
+
+  function renderHeroScene() {
+    if (!isDesktop()) {
+      resetHeroScene();
+      return;
+    }
+
+    const rect = heroSection.getBoundingClientRect();
+    const viewportH = window.innerHeight;
+    const travel = Math.max(heroSection.offsetHeight - viewportH * 0.55, 1);
+
+    const scrolled = Math.max(0, Math.min(-rect.top, travel));
+    const rawProgress = scrolled / travel;
+    const progress = easeOutCubic(rawProgress);
+
+    /* tekst */
+    const contentOpacity = 1 - progress * 1;
+    const contentScale = 1 - progress * 0;
+    const contentY = progress * -400;
+
+    heroContentInner.style.opacity = contentOpacity.toFixed(3);
+    heroContentInner.style.transform =
+      `translateY(${contentY.toFixed(2)}px) scale(${contentScale.toFixed(3)})`;
+
+    /* ilustracja */
+    const artBaseX = -90;
+    const artBaseY = 110;
+    
+    const artScale = 1.33 + progress * 2;
+    const artX = artBaseX + progress * -600;
+    const artY = artBaseY + progress * 800;
+    const artOpacity = 1 - progress * 0.88;
+    const artBlur = progress * 11;
+
+    heroArtInner.style.transform =
+      `translate3d(${artX.toFixed(2)}px, ${artY.toFixed(2)}px, 0) scale(${artScale.toFixed(3)})`;
+    heroArtInner.style.opacity = Math.max(0, artOpacity).toFixed(3);
+    heroArtInner.style.filter = `blur(${artBlur.toFixed(2)}px)`;
+  }
+
+  function updateHeroScene() {
+    requestAnimationFrame(renderHeroScene);
+  }
+
+  if (!window.heroSceneBound) {
+    window.addEventListener('scroll', updateHeroScene, { passive: true });
+    window.addEventListener('resize', updateHeroScene);
+    window.heroSceneBound = true;
+  }
+
+  updateHeroScene();
+  return true;
+}
+
   function boot() {
     initCustomUI();
+    initHeroScene();
     initWorkScene();
 
     let tries = 0;
@@ -198,9 +279,10 @@
       tries += 1;
 
       const uiReady = initCustomUI();
+      const heroReady = initHeroScene();
       const workReady = initWorkScene();
 
-      if ((uiReady && workReady) || tries >= maxTries) {
+      if ((uiReady && heroReady && workReady) || tries >= maxTries) {
         clearInterval(retry);
       }
     }, 100);
