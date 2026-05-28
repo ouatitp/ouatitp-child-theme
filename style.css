@@ -3,6 +3,7 @@ Theme Name: Ouatitp Child
 Template: generatepress
 Version: 1.0.0
 */
+
 /* =========================
    TOKENS
 ========================= */
@@ -129,7 +130,6 @@ body.ui-ready .oua-nav {
   filter: drop-shadow(0 0 0.4px rgba(59, 26, 83, 0.14));
 }
 
-/* toggle */
 .oua-nav__toggle {
   width: 60px;
   min-height: 52px;
@@ -205,7 +205,6 @@ body.ui-ready .oua-nav {
   transform: translateY(-5.5px) rotate(-45deg);
 }
 
-/* nav bar tweek */
 .oua-nav__bar,
 .oua-nav__panel {
   border-radius: 0.875rem;
@@ -215,7 +214,6 @@ body.ui-ready .oua-nav {
   overflow: hidden;
 }
 
-/* dropdown */
 .oua-nav__panel {
   display: none;
   margin-top: 8px;
@@ -379,34 +377,6 @@ img {
 }
 
 /* =========================
-   ACCESSIBILITY / RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  body,
-  body a,
-  body button,
-  body input,
-  body textarea,
-  body select,
-  body .wp-block-button__link {
-    cursor: auto !important;
-  }
-
-  .oua-cursor {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .oua-cursor.is-hover #cursor-spark path {
-    animation: none;
-  }
-}
-
-
-/* =========================
    OUA BUTTON SYSTEM
 ========================= */
 .oua-btn .wp-block-button__link,
@@ -433,7 +403,6 @@ a.oua-btn,
     border-color 0.15s ease;
 }
 
-/* primary */
 .oua-btn--primary .wp-block-button__link,
 .wp-block-button.oua-btn--primary .wp-block-button__link,
 a.oua-btn--primary {
@@ -453,7 +422,6 @@ a.oua-btn--primary:focus {
   border-color: var(--color-accent-dark);
 }
 
-/* secondary */
 .oua-btn--secondary .wp-block-button__link,
 .wp-block-button.oua-btn--secondary .wp-block-button__link,
 a.oua-btn--secondary {
@@ -474,245 +442,8 @@ a.oua-btn--secondary:focus {
 }
 
 /* =========================
-   WORK — STICKY CENTER + FLOATING GALLERY
+   HERO — DESKTOP SCENE
 ========================= */
-
-.oua-work {
-  position: relative;
-  padding: 8rem 4rem 12rem;
-  z-index: 2
-}
-
-.oua-work__intro {
-  position: sticky;
-  top: 50vh;
-  transform: translateY(-50%);
-  z-index: 4;
-  max-width: 34rem;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 1;
-  will-change: opacity;
-  transition: opacity 0.12s linear;
-}
-
-.oua-work__intro-inner {
-  will-change: transform, opacity;
-  transform-origin: center center;
-  transition: transform 0.14s linear, opacity 0.14s linear;
-}
-
-.oua-work__intro,
-.oua-work__intro * {
-  white-space: normal !important;
-}
-
-.oua-work__eyebrow {
-  margin: 0 0 1rem;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  font-weight: 500;
-  color: var(--color-muted);
-}
-
-.oua-work__title {
-  margin: 0 0 1.25rem;
-  font-size: clamp(2.4rem, 4vw, 4.2rem);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  color: var(--color-heading);
-}
-
-.oua-work__text {
-  margin: 0 auto;
-  max-width: 32rem;
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: var(--color-text);
-}
-
-.oua-work__gallery {
-  position: relative;
-  min-height: 165vh;
-  margin-top: -10rem;
-  z-index: 6;
-  pointer-events: none;
-}
-
-.oua-work__item {
-  position: absolute;
-  display: block;
-  overflow: visible;
-  will-change: transform, opacity;
-  pointer-events: auto;
-  transition:
-    opacity 0.22s ease,
-    filter 0.2 s ease;
-  transform-origin: center center;
-}
-
-.oua-work__item img,
-.oua-work__item figure,
-.oua-work__item .wp-block-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
-}
-
-.oua-work__item figure,
-.oua-work__item .wp-block-image {
-  min-height: 0 !important;
-  max-height: none !important;
-  height: auto !important;
-  aspect-ratio: auto !important;
-}
-
-.oua-work__item img {
-  object-fit: contain !important;
-}
-
-/* hover na grafikach w galerii */
-.oua-work__item {
-  transition:
-    transform 0.28s ease,
-    opacity 0.2s ease,
-    filter 0.2s ease;
-  transform-origin: center center;
-}
-
-.oua-work__item:hover {
-  z-index: 20;
-  opacity: 1 !important;
-}
-
-.oua-work__item:hover img {
-  transform: scale(1.22);
-}
-
-.oua-work__item img {
-  transition: transform 0.28s ease;
-}
-
-/* desktop composition */
-.oua-work__item--01 {
-  top: 24rem;
-  left: 10%;
-  width: 8.5rem;
-  z-index: 3;
-}
-
-.oua-work__item--02 {
-  top: 33rem;
-  left: 14%;
-  width: 8rem;
-  z-index: 2;
-  opacity: 0.76;
-}
-
-.oua-work__item--03 {
-  top: 30rem;
-  left: 38%;
-  width: 10rem;
-  z-index: 1;
-  opacity: 0.18;
-}
-
-.oua-work__item--04 {
-  top: 42rem;
-  right: 24%;
-  width: 7.5rem;
-  z-index: 3;
-}
-
-.oua-work__item--05 {
-  top: 35rem;
-  right: 12%;
-  width: 7.25rem;
-  z-index: 2;
-  opacity: 0.68;
-}
-
-.oua-work__item--06 {
-  top: 51rem;
-  right: 8%;
-  width: 6.75rem;
-  z-index: 1;
-  opacity: 0.16;
-}
-
-.oua-work__item--03 img,
-.oua-work__item--06 img {
-  filter: saturate(0.88) brightness(1.05);
-}
-
-/* tablet */
-@media (max-width: 1024px) {
-  .oua-work {
-    padding: 6rem 2rem 7rem;
-  }
-
-  .oua-work__intro {
-    position: relative;
-    top: auto;
-    transform: none;
-    margin: 0 auto 3rem;
-    text-align: center;
-  }
-
-  .oua-work__gallery {
-    min-height: auto;
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-    pointer-events: auto;
-  }
-
-  .oua-work__item {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .oua-work {
-    padding: 5rem 1.5rem 6rem;
-  }
-
-  .oua-work__intro {
-    text-align: left;
-    margin: 0 0 2rem;
-  }
-
-  .oua-work__text {
-    margin: 0;
-  }
-
-  .oua-work__gallery {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .oua-work__title {
-    font-size: clamp(2rem, 9vw, 3rem);
-  }
-}
-
-/* =========================
-   HERO — SCROLL OUTRO v2
-========================= */
-
 .oua-hero {
   position: relative;
   padding: 0 4rem 5rem;
@@ -721,7 +452,6 @@ a.oua-btn--secondary:focus {
   z-index: 8;
 }
 
-/* ważne: nic nie ma ucinać ilustracji */
 .oua-hero,
 .oua-hero .wp-block-columns,
 .oua-hero .wp-block-column,
@@ -796,249 +526,218 @@ a.oua-btn--secondary:focus {
   height: auto;
 }
 
-@media (max-width: 1024px) {
-  .oua-hero {
-    min-height: auto;
-    padding: 0 2rem 5rem;
-    overflow: visible !important;
-  }
-
-  .oua-hero .wp-block-columns {
-    width: min(100%, calc(100% - 48px));
-    gap: 2.5rem;
-  }
-
-  .oua-hero__content {
-    position: relative;
-    top: auto;
-    transform: none;
-    max-width: 100%;
-  }
-
-  .oua-hero__content-inner {
-    max-width: 36rem;
-    transform: none !important;
-    opacity: 1 !important;
-  }
-
-  .oua-hero__art {
-    min-height: auto;
-  }
-
-  .oua-hero__art-inner {
-    position: absolute;
-    top: 8rem;
-    right: 4%;
-    width: min(25rem, 30vw);
-    will-change: transform, opacity, filter;
-    transform-origin: center center;
-    transition:
-      transform 0.12s linear,
-      opacity 0.12s linear,
-      filter 0.12s linear;
-    pointer-events: none;
-  }
+/* =========================
+   WORK — DESKTOP SCENE
+========================= */
+.oua-work {
+  position: relative;
+  padding: 8rem 4rem 12rem;
+  z-index: 2;
 }
 
-@media (max-width: 640px) {
-  .oua-hero {
-    padding: 0 1.5rem 4rem;
-  }
+.oua-work__intro {
+  position: sticky;
+  top: 50vh;
+  transform: translateY(-50%);
+  z-index: 4;
+  max-width: 34rem;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 1;
+  will-change: opacity;
+  transition: opacity 0.12s linear;
+}
 
-  .oua-hero__art-inner {
-    max-width: 20rem;
-  }
+.oua-work__intro-inner {
+  will-change: transform, opacity;
+  transform-origin: center center;
+  transition: transform 0.14s linear, opacity 0.14s linear;
+}
+
+.oua-work__intro,
+.oua-work__intro * {
+  white-space: normal !important;
+}
+
+.oua-work__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.oua-work__title {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--color-heading);
+}
+
+.oua-work__text {
+  margin: 0 auto;
+  max-width: 32rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.oua-work__gallery {
+  position: relative;
+  min-height: 132vh;
+  margin-top: -8rem;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.oua-work__item {
+  position: absolute;
+  display: block;
+  overflow: visible;
+  will-change: transform, opacity;
+  pointer-events: auto;
+  transition:
+    transform 0.28s ease,
+    opacity 0.2s ease,
+    filter 0.2s ease;
+  transform-origin: center center;
+}
+
+.oua-work__item img,
+.oua-work__item figure,
+.oua-work__item .wp-block-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.oua-work__item figure,
+.oua-work__item .wp-block-image {
+  min-height: 0 !important;
+  max-height: none !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+}
+
+.oua-work__item img {
+  object-fit: contain !important;
+  transition: transform 0.28s ease;
+}
+
+.oua-work__item:hover {
+  z-index: 20;
+  opacity: 1 !important;
+}
+
+.oua-work__item:hover img {
+  transform: scale(1.22);
+}
+
+.oua-work__item--01 {
+  top: 24rem;
+  left: 10%;
+  width: 9.5rem;
+  z-index: 3;
+}
+
+.oua-work__item--02 {
+  top: 33rem;
+  left: 14%;
+  width: 9rem;
+  z-index: 2;
+  opacity: 0.76;
+}
+
+.oua-work__item--03 {
+  top: 30rem;
+  left: 38%;
+  width: 11rem;
+  z-index: 1;
+  opacity: 0.18;
+}
+
+.oua-work__item--04 {
+  top: 42rem;
+  right: 24%;
+  width: 8.5rem;
+  z-index: 3;
+}
+
+.oua-work__item--05 {
+  top: 35rem;
+  right: 12%;
+  width: 8.25rem;
+  z-index: 2;
+  opacity: 0.68;
+}
+
+.oua-work__item--06 {
+  top: 51rem;
+  right: 8%;
+  width: 7.75rem;
+  z-index: 1;
+  opacity: 0.16;
+}
+
+.oua-work__item--03 img,
+.oua-work__item--06 img {
+  filter: saturate(0.88) brightness(1.05);
 }
 
 /* =========================
-   HERO — RESPONSIVE FINAL
+   PROCESS — EDITORIAL SECTION + BACKGROUND COLLAGE
 ========================= */
-
-@media (max-width: 1199px) {
-  .oua-hero {
-    min-height: auto;
-    padding: 2rem 2rem 5rem;
-    overflow: visible !important;
-  }
-
-  .oua-hero .wp-block-columns {
-    width: min(100%, calc(100% - 32px));
-    gap: 2.5rem;
-    align-items: start;
-  }
-
-  .oua-hero__content {
-    position: relative;
-    top: auto;
-    transform: none;
-    max-width: 100%;
-    z-index: 3;
-  }
-
-  .oua-hero__content-inner {
-    max-width: 36rem;
-    transform: none !important;
-    opacity: 1 !important;
-  }
-
-  .oua-hero__art {
-    position: relative;
-    min-height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .oua-hero__art-inner {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    width: min(100%, 26rem);
-    max-width: 26rem;
-    margin: 0.5rem auto 0;
-    transform: none !important;
-    opacity: 1 !important;
-    filter: none !important;
-  }
-}
-
-@media (max-width: 680px) {
-  .oua-hero {
-    padding: 1.5rem 1.5rem 4rem;
-  }
-
-  .oua-hero .wp-block-columns {
-    width: calc(100% - 16px);
-    gap: 2rem;
-  }
-
-  .oua-hero__content-inner {
-    max-width: 100%;
-  }
-
-  .oua-hero__art-inner {
-    width: min(100%, 16.5rem);
-    max-width: 16.5rem;
-    margin-top: 0.25rem;
-  }
-}
-
-/* =========================
-   WORK — RESPONSIVE FINAL
-========================= */
-
-@media (max-width: 1199px) {
-  .oua-work {
-    padding: 6rem 2rem 7rem;
-    z-index: 2;
-  }
-
-  .oua-work__intro {
-    position: relative;
-    top: auto;
-    transform: none;
-    max-width: 100%;
-    margin: 0 auto 3rem;
-    text-align: center;
-    opacity: 1 !important;
-  }
-
-  .oua-work__intro-inner {
-    transform: none !important;
-    opacity: 1 !important;
-  }
-
-  .oua-work__text {
-    max-width: 36rem;
-  }
-
-  .oua-work__gallery {
-    position: relative;
-    min-height: auto;
-    margin-top: 2.5rem;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-    z-index: 1;
-    pointer-events: auto;
-  }
-
-  .oua-work__item {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    opacity: 1 !important;
-    transform: none !important;
-    z-index: auto !important;
-  }
-
-  .oua-work__item:hover {
-    z-index: auto !important;
-  }
-
-  .oua-work__item:hover img {
-    transform: none;
-  }
-
-  .oua-work__item img {
-    width: 100%;
-    height: auto;
-    transition: none;
-    filter: none !important;
-  }
-}
-
-@media (max-width: 680px) {
-  .oua-work {
-    padding: 5rem 1.5rem 6rem;
-  }
-
-  .oua-work__intro {
-    text-align: left;
-    margin: 0 0 2rem;
-  }
-
-  .oua-work__text {
-    max-width: 100%;
-    margin: 0;
-  }
-
-  .oua-work__gallery {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-
-  .oua-work__title {
-    font-size: clamp(2rem, 9vw, 3rem);
-  }
-}
-
-/* =========================
-   PROCESS — EDITORIAL SECTION
-========================= */
-
 .oua-process {
   position: relative;
-  padding: 0rem 4rem 8rem;
+  padding: 14rem 4rem 8rem;
+  overflow: visible;
+}
+
+.oua-process::before {
+  content: "";
+  position: absolute;
+  top: -16rem;
+  right: 4rem;
+  width: min(52rem, 60vw);
+  height: min(52rem, 60vw);
+
+  background-image: url("assets/img/process-collage-01.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  opacity: 0;
+  transform: translateY(48px) scale(0.96);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.oua-process.is-visible::before {
+  opacity: 0.88;
+  transform: translateY(0) scale(1);
 }
 
 .oua-process__intro,
 .oua-process__steps {
+  position: relative;
+  z-index: 3;
   width: min(1180px, calc(100% - 96px));
   margin-left: auto;
   margin-right: auto;
 }
 
 .oua-process__intro {
-  width: min(1180px, calc(100% - 96px));
-  margin-left: auto;
-  margin-right: auto;
   padding-bottom: 2.5rem;
 }
 
@@ -1106,10 +805,127 @@ a.oua-btn--secondary:focus {
   max-width: 24rem;
 }
 
-/* tablet */
+/* =========================
+   HERO — RESPONSIVE FINAL
+========================= */
 @media (max-width: 1199px) {
+  .oua-hero {
+    min-height: auto;
+    padding: 2rem 2rem 5rem;
+    overflow: visible !important;
+  }
+
+  .oua-hero .wp-block-columns {
+    width: min(100%, calc(100% - 32px));
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .oua-hero__content {
+    position: relative;
+    top: auto;
+    transform: none;
+    max-width: 100%;
+    z-index: 3;
+  }
+
+  .oua-hero__content-inner {
+    max-width: 36rem;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .oua-hero__art {
+    position: relative;
+    min-height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .oua-hero__art-inner {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: min(100%, 26rem);
+    max-width: 26rem;
+    margin: 0.5rem auto 0;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .oua-work {
+    padding: 6rem 2rem 7rem;
+    z-index: 2;
+  }
+
+  .oua-work__intro {
+    position: relative;
+    top: auto;
+    transform: none;
+    max-width: 100%;
+    margin: 0 auto 3rem;
+    text-align: center;
+    opacity: 1 !important;
+  }
+
+  .oua-work__intro-inner {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .oua-work__text {
+    max-width: 36rem;
+  }
+
+  .oua-work__gallery {
+    position: relative;
+    min-height: auto;
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    z-index: 1;
+    pointer-events: auto;
+  }
+
+  .oua-work__item {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    transform: none !important;
+    z-index: auto !important;
+  }
+
+  .oua-work__item:hover {
+    z-index: auto !important;
+  }
+
+  .oua-work__item:hover img {
+    transform: none;
+  }
+
+  .oua-work__item img {
+    width: 100%;
+    height: auto;
+    transition: none;
+    filter: none !important;
+  }
+
   .oua-process {
     padding: 5rem 2rem 7rem;
+  }
+
+  .oua-process::before {
+    background-size: min(28rem, 58vw);
+    background-position: right 6% top 7rem;
   }
 
   .oua-process__intro,
@@ -1132,10 +948,61 @@ a.oua-btn--secondary:focus {
   }
 }
 
-/* mobile */
+/* =========================
+   MOBILE FINAL
+========================= */
 @media (max-width: 680px) {
+  .oua-hero {
+    padding: 1.5rem 1.5rem 4rem;
+  }
+
+  .oua-hero .wp-block-columns {
+    width: calc(100% - 16px);
+    gap: 2rem;
+  }
+
+  .oua-hero__content-inner {
+    max-width: 100%;
+  }
+
+  .oua-hero__art-inner {
+    width: min(100%, 16.5rem);
+    max-width: 16.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .oua-work {
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  .oua-work__intro {
+    text-align: left;
+    margin: 0 0 2rem;
+  }
+
+  .oua-work__text {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .oua-work__gallery {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .oua-work__title {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
   .oua-process {
     padding: 4rem 1.5rem 6rem;
+  }
+
+  .oua-process::before {
+    background-size: min(20rem, 78vw);
+    background-position: center top 10rem;
+    opacity: 0.12;
   }
 
   .oua-process__intro,
@@ -1150,5 +1017,112 @@ a.oua-btn--secondary:focus {
 
   .oua-process__text {
     max-width: 100%;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY / RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  body,
+  body a,
+  body button,
+  body input,
+  body textarea,
+  body select,
+  body .wp-block-button__link {
+    cursor: auto !important;
+  }
+
+  .oua-cursor {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oua-cursor.is-hover #cursor-spark path {
+    animation: none;
+  }
+}
+
+/* =========================
+   PROCESS — RESPONSIVE FINAL
+========================= */
+
+@media (max-width: 1199px) {
+  .oua-process {
+    padding: 8rem 2rem 7rem;
+  }
+
+  .oua-process::before {
+    width: min(30rem, 70vw);
+    height: min(30rem, 70vw);
+    right: 50%;
+    top: -1rem;
+    transform: translate(50%, 24px) scale(0.96);
+    background-size: contain;
+    background-position: center;
+  }
+
+  .oua-process.is-visible::before {
+    transform: translate(50%, 0) scale(1);
+    opacity: 0.22;
+  }
+
+  .oua-process__intro,
+  .oua-process__steps {
+    width: min(100%, calc(100% - 32px));
+  }
+
+  .oua-process__intro {
+    padding-bottom: 2rem;
+  }
+
+  .oua-process__steps {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .oua-process__step-text {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .oua-process {
+    padding: 6.5rem 1.5rem 6rem;
+  }
+
+  .oua-process::before {
+    width: min(22rem, 82vw);
+    height: min(22rem, 82vw);
+    right: 50%;
+    top: 0;
+    transform: translate(50%, 20px) scale(0.97);
+  }
+
+  .oua-process.is-visible::before {
+    transform: translate(50%, 0) scale(1);
+    opacity: 0.16;
+  }
+
+  .oua-process__intro,
+  .oua-process__steps {
+    width: 100%;
+  }
+
+  .oua-process__title {
+    max-width: none;
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .oua-process__text {
+    max-width: 100%;
+  }
+
+  .oua-process__intro {
+    padding-bottom: 1.75rem;
   }
 }
