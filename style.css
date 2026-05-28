@@ -1018,3 +1018,137 @@ a.oua-btn--secondary:focus {
     font-size: clamp(2rem, 9vw, 3rem);
   }
 }
+
+/* =========================
+   PROCESS — EDITORIAL SECTION
+========================= */
+
+.oua-process {
+  position: relative;
+  padding: 0rem 4rem 8rem;
+}
+
+.oua-process__intro,
+.oua-process__steps {
+  width: min(1180px, calc(100% - 96px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.oua-process__intro {
+  width: min(1180px, calc(100% - 96px));
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2.5rem;
+}
+
+.oua-process__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.oua-process__title {
+  margin: 0 0 1rem;
+  font-size: clamp(2.2rem, 3.8vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--color-heading);
+  max-width: 10ch;
+}
+
+.oua-process__text {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.oua-process__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.oua-process__step {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.oua-process__step-number {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  font-size: 0.82rem;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.oua-process__step-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.oua-process__step-text {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  max-width: 24rem;
+}
+
+/* tablet */
+@media (max-width: 1199px) {
+  .oua-process {
+    padding: 5rem 2rem 7rem;
+  }
+
+  .oua-process__intro,
+  .oua-process__steps {
+    width: min(100%, calc(100% - 32px));
+  }
+
+  .oua-process__intro {
+    max-width: 100%;
+    margin-bottom: 2.5rem;
+  }
+
+  .oua-process__steps {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .oua-process__step-text {
+    max-width: 100%;
+  }
+}
+
+/* mobile */
+@media (max-width: 680px) {
+  .oua-process {
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  .oua-process__intro,
+  .oua-process__steps {
+    width: 100%;
+  }
+
+  .oua-process__title {
+    max-width: none;
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .oua-process__text {
+    max-width: 100%;
+  }
+}
