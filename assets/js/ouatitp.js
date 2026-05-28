@@ -106,15 +106,15 @@
   }
 
   function isDesktop() {
-    return window.matchMedia('(min-width: 1025px)').matches;
+    return window.matchMedia('(min-width: 1200px)').matches;
   }
 
   function resetWorkScene() {
-    workIntro.style.opacity = '';
-    workIntroInner.style.transform = '';
-
+    workIntro.style.opacity = '1';
+    workIntroInner.style.transform = 'none';
+    
     workItems.forEach(function (item) {
-      item.style.transform = '';
+      item.style.transform = 'none';
     });
   }
 
@@ -203,15 +203,15 @@ function initHeroScene() {
   }
 
   function isDesktop() {
-    return window.matchMedia('(min-width: 1025px)').matches;
+    return window.matchMedia('(min-width: 1200px)').matches;
   }
 
   function resetHeroScene() {
-    heroContentInner.style.opacity = '';
-    heroContentInner.style.transform = '';
-    heroArtInner.style.opacity = '';
-    heroArtInner.style.transform = '';
-    heroArtInner.style.filter = '';
+    heroContentInner.style.opacity = '1';
+    heroContentInner.style.transform = 'none';
+    heroArtInner.style.opacity = '1';
+    heroArtInner.style.transform = 'none';
+    heroArtInner.style.filter = 'none';
   }
 
   function renderHeroScene() {
@@ -239,7 +239,7 @@ function initHeroScene() {
 
     /* ilustracja */
     const artBaseX = -90;
-    const artBaseY = 110;
+    const artBaseY = 90;
     
     const artScale = 1.33 + progress * 2;
     const artX = artBaseX + progress * -600;
