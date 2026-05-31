@@ -1492,6 +1492,34 @@ a.oua-btn--secondary:focus {
   outline: none;
 }
 
+.oua-footer__watermark {
+  width: min(1180px, calc(100% - 96px));
+  margin: 5.5rem auto 0;
+  padding: 0;
+  border-top: 0;
+  text-align: right;
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: rgba(111, 123, 132, 0.62);
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 1199px) {
+  .oua-footer__watermark {
+    width: min(100%, calc(100% - 32px));
+    margin-top: 4rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .oua-footer__watermark {
+    width: 100%;
+    margin-top: 3rem;
+    font-size: 0.64rem;
+    text-align: right;
+  }
+}
+
 /* tablet */
 @media (max-width: 1199px) {
   .oua-footer {
@@ -1559,6 +1587,8 @@ a.oua-btn--secondary:focus {
     line-height: 1.68;
   }
 }
+
+
 
 /* =========================
    WORK LIGHTBOX
