@@ -144,17 +144,17 @@
 
       heroContentInner.style.opacity = contentOpacity.toFixed(3);
       heroContentInner.style.transform =
-        `translateY(${contentY.toFixed(2)}px) scale(${contentScale.toFixed(3)})`;
+        `translate3d(0, ${contentY.toFixed(2)}px, 0) scale(${contentScale.toFixed(3)})`;
 
       /* ilustracja */
       const artBaseX = -90;
       const artBaseY = 90;
 
-      const artScale = 1.33 + progress * 2;
+      const artScale = 1.2 + progress * 1.6;
       const artX = artBaseX + progress * -600;
-      const artY = artBaseY + progress * 800;
+      const artY = artBaseY + progress * 680;
       const artOpacity = 1 - progress * 0.88;
-      const artBlur = progress * 11;
+      const artBlur = progress * 6;
 
       heroArtInner.style.transform =
         `translate3d(${artX.toFixed(2)}px, ${artY.toFixed(2)}px, 0) scale(${artScale.toFixed(3)})`;
@@ -228,7 +228,7 @@
 
       workIntro.style.opacity = introOpacity.toFixed(3);
       workIntroInner.style.transform =
-        `translateY(${introY.toFixed(2)}px) scale(${introScale.toFixed(3)})`;
+        `translate3d(0, ${introY.toFixed(2)}px, 0) scale(${introScale.toFixed(3)})`;
 
       /* ilustracje */
       workItems.forEach(function (item) {
@@ -322,11 +322,63 @@
     return true;
   }
 
+function initSectionScroll() {
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+  if (!anchorLinks.length) return false;
+
+  function easeInOutCubic(t) {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function animateScrollTo(targetY, duration) {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutCubic(progress);
+
+      window.scrollTo(0, startY + distance * eased);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  anchorLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const offset = 88;
+      const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      animateScrollTo(targetY, 1350);
+    });
+  });
+
+  return true;
+}
+
   /* =========================
      BOOT
   ========================= */
   function boot() {
     initCustomUI();
+    initSectionScroll();
     initHeroScene();
     initWorkScene();
     initProcessReveal();
@@ -339,12 +391,13 @@
       tries += 1;
 
       const uiReady = initCustomUI();
+      const sectionScrollReady = initSectionScroll();
       const heroReady = initHeroScene();
       const workReady = initWorkScene();
       const processReady = initProcessReveal();
       const lightboxReady = initWorkLightbox();
 
-      if ((uiReady && heroReady && workReady && processReady && lightboxReady) || tries >= maxTries) {
+      if ((uiReady && sectionScrollReady && heroReady && workReady && processReady && lightboxReady) || tries >= maxTries) {
         clearInterval(retry);
       }
     }, 100);
