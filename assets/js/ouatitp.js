@@ -73,7 +73,8 @@
 
     if (cursor && window.matchMedia('(min-width: 769px)').matches) {
       let cursorReady = false;
-      const targets = document.querySelectorAll('a, button, .wp-block-button__link');
+      const targets = document.querySelectorAll('a, button, .wp-block-button__link, .oua-work__item, .oua-lightbox__close, .oua-lightbox__nav'
+      );
 
       document.addEventListener('mousemove', function (e) {
         cursor.style.left = e.clientX + 'px';
@@ -329,6 +330,7 @@
     initHeroScene();
     initWorkScene();
     initProcessReveal();
+    initWorkLightbox();
 
     let tries = 0;
     const maxTries = 40;
@@ -340,8 +342,9 @@
       const heroReady = initHeroScene();
       const workReady = initWorkScene();
       const processReady = initProcessReveal();
+      const lightboxReady = initWorkLightbox();
 
-      if ((uiReady && heroReady && workReady && processReady) || tries >= maxTries) {
+      if ((uiReady && heroReady && workReady && processReady && lightboxReady) || tries >= maxTries) {
         clearInterval(retry);
       }
     }, 100);
@@ -353,3 +356,215 @@
     boot();
   }
 })();
+
+function initWorkLightbox() {
+  const lightbox = document.querySelector('.oua-lightbox');
+  const lightboxImage = document.querySelector('.oua-lightbox__image');
+  const closeBtn = document.querySelector('.oua-lightbox__close');
+  const prevBtn = document.querySelector('.oua-lightbox__nav--prev');
+  const nextBtn = document.querySelector('.oua-lightbox__nav--next');
+  const workItems = document.querySelectorAll('.oua-work__item');
+
+  if (!lightbox || !lightboxImage || !closeBtn || !prevBtn || !nextBtn || !workItems.length) {
+    return false;
+  }
+
+  const images = Array.from(workItems)
+    .map(function (item) {
+      const img = item.querySelector('img');
+      if (!img) return null;
+
+      return {
+        src: img.getAttribute('src'),
+        alt: img.getAttribute('alt') || ''
+      };
+    })
+    .filter(Boolean);
+
+  if (!images.length) {
+    return false;
+  }
+
+  let currentIndex = 0;
+  let isAnimating = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  function clearTransitionClasses() {
+    lightboxImage.classList.remove(
+      'is-transitioning-out-next',
+      'is-transitioning-out-prev',
+      'is-transitioning-in-next',
+      'is-transitioning-in-prev'
+    );
+  }
+
+  function renderImage(index) {
+    const image = images[index];
+    if (!image) return;
+
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
+  }
+
+  function openLightbox(index) {
+    currentIndex = index;
+    renderImage(currentIndex);
+    clearTransitionClasses();
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('oua-lightbox-open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('oua-lightbox-open');
+    clearTransitionClasses();
+    isAnimating = false;
+
+    setTimeout(function () {
+      lightboxImage.src = '';
+      lightboxImage.alt = '';
+    }, 220);
+  }
+
+  function transitionTo(nextIndex, direction) {
+    if (isAnimating || !images[nextIndex]) return;
+    isAnimating = true;
+
+    const outClass =
+      direction === 'next'
+        ? 'is-transitioning-out-next'
+        : 'is-transitioning-out-prev';
+
+    const inClass =
+      direction === 'next'
+        ? 'is-transitioning-in-next'
+        : 'is-transitioning-in-prev';
+
+    clearTransitionClasses();
+    lightboxImage.classList.add(outClass);
+
+    setTimeout(function () {
+      currentIndex = nextIndex;
+      renderImage(currentIndex);
+
+      clearTransitionClasses();
+      lightboxImage.classList.add(inClass);
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          clearTransitionClasses();
+        });
+      });
+
+      setTimeout(function () {
+        clearTransitionClasses();
+        isAnimating = false;
+      }, 230);
+    }, 180);
+  }
+
+  function showPrev() {
+    const nextIndex = (currentIndex - 1 + images.length) % images.length;
+    transitionTo(nextIndex, 'prev');
+  }
+
+  function showNext() {
+    const nextIndex = (currentIndex + 1) % images.length;
+    transitionTo(nextIndex, 'next');
+  }
+
+  function handleSwipe() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+
+    if (absX < 40 || absX <= absY) {
+      return;
+    }
+
+    if (deltaX < 0) {
+      showNext();
+    } else {
+      showPrev();
+    }
+  }
+
+  workItems.forEach(function (item, index) {
+    const img = item.querySelector('img');
+    if (!img) return;
+
+    item.addEventListener('click', function () {
+      openLightbox(index);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', showPrev);
+  nextBtn.addEventListener('click', showNext);
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+
+    if (e.key === 'ArrowLeft') {
+      showPrev();
+    }
+
+    if (e.key === 'ArrowRight') {
+      showNext();
+    }
+  });
+
+  lightbox.addEventListener(
+    'touchstart',
+    function (e) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (!e.touches || !e.touches.length) return;
+
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchEndX = touchStartX;
+      touchEndY = touchStartY;
+    },
+    { passive: true }
+  );
+
+  lightbox.addEventListener(
+    'touchmove',
+    function (e) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (!e.touches || !e.touches.length) return;
+
+      touchEndX = e.touches[0].clientX;
+      touchEndY = e.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  lightbox.addEventListener(
+    'touchend',
+    function () {
+      if (!lightbox.classList.contains('is-open')) return;
+      handleSwipe();
+    },
+    { passive: true }
+  );
+
+  return true;
+}
