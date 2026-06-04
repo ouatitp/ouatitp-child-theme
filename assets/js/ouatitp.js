@@ -146,20 +146,11 @@
       heroContentInner.style.transform =
         `translate3d(0, ${contentY.toFixed(2)}px, 0) scale(${contentScale.toFixed(3)})`;
 
-      /* ilustracja */
-      const artBaseX = -90;
-      const artBaseY = 90;
 
-      const artScale = 1.2 + progress * 1.6;
-      const artX = artBaseX + progress * -600;
-      const artY = artBaseY + progress * 680;
-      const artOpacity = 1 - progress * 0.88;
-      const artBlur = progress * 6;
-
-      heroArtInner.style.transform =
-        `translate3d(${artX.toFixed(2)}px, ${artY.toFixed(2)}px, 0) scale(${artScale.toFixed(3)})`;
-      heroArtInner.style.opacity = Math.max(0, artOpacity).toFixed(3);
-      heroArtInner.style.filter = `blur(${artBlur.toFixed(2)}px)`;
+      /* ilustracja — static */
+      heroArtInner.style.opacity = '1';
+      heroArtInner.style.transform = 'translate3d(-90px, 90px, 0) scale(1.33)';
+      heroArtInner.style.filter = 'none';
     }
 
     let heroTicking = false;
