@@ -354,10 +354,21 @@ function initSectionScroll() {
 
       e.preventDefault();
 
-      const offset = 88;
-      const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
+      const header = document.querySelector('.oua-header');
 
-      animateScrollTo(targetY, 1350);
+let offset = 88;
+
+if (header) {
+  offset = header.offsetHeight + 16;
+}
+
+if (window.matchMedia('(max-width: 680px)').matches) {
+  offset = 52;
+}
+
+const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
+
+animateScrollTo(targetY, 1200);
     });
   });
 

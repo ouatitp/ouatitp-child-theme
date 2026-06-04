@@ -982,7 +982,7 @@ a.oua-btn--secondary:focus {
   }
 
   .oua-work {
-    padding: 5rem 1.5rem 6rem;
+    padding: 3rem 1.5rem 6rem;
   }
 
   .oua-work__intro {
@@ -1597,10 +1597,21 @@ a.oua-btn--secondary:focus {
     max-width: 100%;
   }
 
-  .oua-footer__meta {
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-border);
+  .oua-footer__meta a {
+    color: var(--color-heading);
+    text-decoration: none;
+    transition: opacity 0.18s ease;
   }
+
+  .oua-footer__meta a:hover,
+  .oua-footer__meta a:focus-visible {
+    opacity: 0.58;
+    outline: none;
+  }
+
+  .oua-footer__meta span {
+    color: var(--color-text);  
+    }
 }
 
 /* mobile */
@@ -1927,5 +1938,296 @@ body.oua-lightbox-open {
 
   .oua-lightbox__nav--next {
     right: 0.85rem;
+  }
+}
+
+/* =========================
+   MOBILE LIGHTBOX — NAV BELOW IMAGE
+========================= */
+
+@media (max-width: 680px) {
+  .oua-lightbox {
+    padding: 4.75rem 1rem 5.5rem;
+    align-items: center;
+  }
+
+  .oua-lightbox__inner {
+    max-width: 100%;
+    max-height: calc(100vh - 11rem);
+  }
+
+  .oua-lightbox__image {
+    max-width: 100%;
+    max-height: calc(100vh - 11rem);
+  }
+
+  .oua-lightbox__nav {
+    top: auto;
+    bottom: 1.35rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    transform: none;
+  }
+
+  .oua-lightbox__nav--prev {
+    left: calc(50% - 3.5rem);
+  }
+
+  .oua-lightbox__nav--next {
+    right: calc(50% - 3.5rem);
+  }
+
+  .oua-lightbox__nav--prev:hover,
+  .oua-lightbox__nav--prev:focus-visible {
+    transform: translateX(-2px);
+  }
+
+  .oua-lightbox__nav--next:hover,
+  .oua-lightbox__nav--next:focus-visible {
+    transform: translateX(2px);
+  }
+
+  .oua-lightbox__close {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* =========================
+   MOBILE POLISH — HERO
+========================= */
+
+@media (max-width: 680px) {
+  .oua-header {
+    top: 1.25rem;
+    width: calc(100% - 2rem);
+  }
+
+  .oua-hero {
+    padding: 6.4rem 1.5rem 3.25rem;
+  }
+
+  .oua-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    width: 100%;
+  }
+
+  .oua-hero__content {
+    max-width: 100%;
+  }
+
+  .oua-hero__content-inner {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .oua-hero__eyebrow {
+    margin-bottom: 0.85rem;
+    font-size: 0.86rem;
+  }
+
+  .oua-hero__title {
+    max-width: 8.5ch;
+    font-size: clamp(3rem, 14.2vw, 4.15rem);
+    line-height: 0.96;
+    letter-spacing: -0.052em;
+  }
+
+  .oua-hero__text {
+    max-width: 19rem;
+    margin-top: 1.35rem;
+    font-size: 1rem;
+    line-height: 1.58;
+  }
+
+  .oua-hero__actions {
+    margin-top: 1.75rem;
+  }
+
+  .oua-hero__actions .wp-block-button__link,
+  .oua-hero__actions a {
+    padding: 0.78rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .oua-hero__art {
+    transform: none;
+  }
+
+  .oua-hero__art-inner {
+    transform: scale(1.2) !important;
+    transform-origin: center center;
+    margin-top: -1.25rem;
+  }
+}
+
+/* =========================
+   MOBILE PROCESS — IMAGE ABOVE INTRO
+========================= */
+
+@media (max-width: 680px) {
+  .oua-process {
+    padding: 3.5rem 1.5rem 5.5rem;
+    overflow: visible;
+  }
+
+  .oua-process::before {
+    content: "";
+    position: relative;
+    inset: auto;
+    display: block;
+
+    width: 100vw;
+    height: 22rem;
+
+    margin: 0 0 0.75rem 50%;
+    transform: translateX(-50%);
+
+    background-image: url("assets/img/process-collage-01.webp");
+    background-repeat: no-repeat;
+    background-size: 96vw auto;
+    background-position: top center;
+
+    opacity: 1;
+    transition: none;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .oua-process.is-visible::before {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+
+  .oua-process__intro,
+  .oua-process__steps {
+    position: relative;
+    z-index: 1;
+  }
+
+  .oua-process__intro {
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* =========================
+   MOBILE ABOUT — CLEAN OVERRIDE
+========================= */
+
+@media (max-width: 680px) {
+
+  .oua-about {
+    padding-top: 3rem;
+  }
+
+  .oua-about__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    justify-items: center;
+    overflow: visible;
+  }
+
+  .oua-about__card {
+    width: 100%;
+    max-width: 27rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .oua-about__card + .oua-about__card {
+    margin-top: -2.6rem;
+  }
+
+  .oua-about__card:nth-child(1),
+  .oua-about__card:nth-child(2),
+  .oua-about__card:nth-child(3),
+  .oua-about__card:nth-child(4),
+  .oua-about__card:nth-child(5) {
+    transform: none;
+  }
+
+  .oua-about__card--image,
+  .oua-about__card--image figure,
+  .oua-about__card--image .wp-block-image {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .oua-about__card--image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none !important;
+    transform: scale(1.06) !important;
+    transform-origin: center center;
+  }
+}
+
+/* =========================
+   MOBILE POLISH — FOOTER
+========================= */
+
+@media (max-width: 680px) {
+  .oua-footer {
+    padding: 3rem 1.5rem 3rem;
+  }
+
+  .oua-footer__inner {
+    width: 100%;
+    row-gap: 2.75rem;
+  }
+
+  .oua-footer__photo {
+    justify-content: center;
+  }
+
+  .oua-footer__polaroid {
+    width: min(17.5rem, 78vw);
+    margin-left: auto;
+    margin-right: auto;
+    transform: rotate(-3deg);
+  }
+
+  .oua-footer__content {
+    width: 100%;
+  }
+
+  .oua-footer__eyebrow {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .oua-footer__title {
+    max-width: 9ch;
+    font-size: clamp(2.1rem, 9.2vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    margin-bottom: 1.25rem;
+  }
+
+  .oua-footer__body {
+    row-gap: 1.75rem;
+  }
+
+  .oua-footer__text {
+    font-size: 1rem;
+    line-height: 1.62;
   }
 }
