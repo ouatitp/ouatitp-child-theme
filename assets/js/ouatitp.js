@@ -69,6 +69,20 @@
         : 52;
     }
 
+    if (window.matchMedia('(min-width: 900px) and (max-width: 1199px) and (orientation: landscape)').matches) {
+      const offsets = {
+        work: 12,
+        process: 72,
+        about: 90,
+        contact: 90,
+        top: 0
+      };
+
+      return Object.prototype.hasOwnProperty.call(offsets, targetId)
+        ? offsets[targetId]
+        : 90;
+    }
+
     if (isTablet()) {
       const offsets = {
         /* Lower value means the target lands closer to the top.

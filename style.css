@@ -1163,56 +1163,79 @@ body.oua-lightbox-open {
 /* =========================================================
    TABLET / SMALL DESKTOP BASE
 ========================================================= */
-@media (max-width: 1199px) {
+@media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .oua-hero {
-    min-height: auto;
-    padding: 2rem 2rem 5rem;
-    overflow: hidden;
+    padding: 7.25rem 4rem 3rem !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
   }
 
-  .oua-hero__inner,
   .oua-hero .wp-block-columns {
-    width: min(100%, calc(100% - 32px));
-    gap: 2.5rem;
-    align-items: start;
+    width: 100% !important;
+    max-width: 1180px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 30rem) minmax(0, 1fr) !important;
+    gap: 2.5rem !important;
+    align-items: center !important;
   }
 
   .oua-hero__content {
-    position: relative;
-    top: auto;
-    z-index: 3;
-    max-width: 100%;
-    transform: none;
+    max-width: 30rem !important;
   }
 
   .oua-hero__content-inner {
-    max-width: 36rem;
+    max-width: 30rem !important;
     transform: none !important;
     opacity: 1 !important;
+  }
+
+  .oua-hero__eyebrow {
+    margin-bottom: 0.85rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .oua-hero__title {
+    max-width: 8.2ch !important;
+    font-size: clamp(3.1rem, 5.4vw, 4.15rem) !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.052em !important;
+  }
+
+  .oua-hero__text {
+    max-width: 28rem !important;
+    margin-top: 1.35rem !important;
+    font-size: 1rem !important;
+    line-height: 1.58 !important;
   }
 
   .oua-hero__art {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    min-height: auto;
-    pointer-events: none;
-    overflow: visible;
+    min-height: 0 !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    overflow: visible !important;
   }
 
   .oua-hero__art-inner {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    width: min(100%, 26rem);
-    max-width: 26rem;
-    margin: 0.5rem auto 0;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: min(39vw, 25rem) !important;
+    max-width: none !important;
+    margin: -2rem -0.5rem 0 auto !important;
     transform: none !important;
     opacity: 1 !important;
     filter: none !important;
+  }
+
+  .oua-hero__art-inner img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .oua-work {
@@ -1273,6 +1296,64 @@ body.oua-lightbox-open {
     transition: none;
   }
 
+  .oua-work .oua-work__gallery,
+  .oua-work .oua-work__gallery.is-layout-flex {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    margin-top: 2.75rem !important;
+  }
+
+  .oua-work .oua-work__gallery > .oua-work__item {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    width: 100% !important;
+    max-width: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    z-index: auto !important;
+  }
+
+  .oua-work .oua-work__gallery > .oua-work__item img,
+  .oua-work .oua-work__gallery > .oua-work__item figure,
+  .oua-work .oua-work__gallery > .oua-work__item .wp-block-image {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .oua-lightbox {
+    padding: 3.25rem 2rem 5.25rem !important;
+  }
+
+  .oua-lightbox__inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: calc(100vh - 8.5rem) !important;
+  }
+
+  .oua-lightbox__image {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+
+    max-width: min(88vw, 58rem) !important;
+    max-height: calc(100vh - 9.75rem) !important;
+
+    object-fit: contain !important;
+  }
+
+  .oua-lightbox__nav {
+    bottom: 1.35rem !important;
+  }
+
   .oua-process {
     padding: 8rem 2rem 7rem;
   }
@@ -1308,6 +1389,64 @@ body.oua-lightbox-open {
 
   .oua-process__step-text {
     max-width: 100%;
+  }
+
+  .oua-process {
+    padding: 4.5rem 5rem 5rem !important;
+  }
+
+.oua-process::before {
+    width: 100vw !important;
+    height: 24.5rem !important;
+
+    margin: 0 0 1.75rem 50% !important;
+    transform: translateX(-50%) !important;
+
+    background-size: 45% auto !important;
+    background-position: 60% top !important;
+
+    opacity: 1 !important;
+  }
+
+  .oua-process.is-visible::before {
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .oua-process__intro,
+  .oua-process__steps {
+    width: 100% !important;
+  }
+
+  .oua-process__intro {
+    max-width: none !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .oua-process__title {
+    max-width: 11ch !important;
+    font-size: clamp(2.15rem, 4vw, 3rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  .oua-process__text {
+    max-width: 42rem !important;
+  }
+
+  .oua-process__steps {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+
+  .oua-process__step {
+    padding-top: 1.1rem !important;
+  }
+
+  .oua-process__step-text {
+    max-width: 100% !important;
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
   }
 
   .oua-about {
@@ -1358,6 +1497,110 @@ body.oua-lightbox-open {
     transform: none;
   }
 
+  .oua-about {
+    padding: 5rem 5rem 5.5rem !important;
+  }
+
+  .oua-about__top {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 24rem) minmax(0, 1fr) !important;
+    gap: 4rem !important;
+    align-items: start !important;
+  }
+
+  .oua-about__intro {
+    position: sticky !important;
+    top: 8rem !important;
+    max-width: 24rem !important;
+  }
+
+  .oua-about__title {
+    max-width: 8.8ch !important;
+    font-size: clamp(2.45rem, 4vw, 3.35rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .oua-about__text {
+    max-width: 24rem !important;
+    font-size: 0.98rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .oua-about__aside {
+    margin-top: 0 !important;
+    overflow: visible !important;
+  }
+
+  .oua-about__grid.is-layout-flex,
+  .oua-about__grid.wp-block-group.is-layout-flex,
+  .oua-about__grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+
+    width: 100% !important;
+    max-width: 32rem !important;
+    margin: 0 auto !important;
+    gap: 0 !important;
+    overflow: visible !important;
+  }
+
+  .oua-about__grid > .oua-about__card {
+    width: min(22rem, 100%) !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .oua-about__grid > .oua-about__card + .oua-about__card {
+    margin-top: -3.6rem !important;
+  }
+
+  .oua-about__grid > .oua-about__card:nth-child(1),
+  .oua-about__grid > .oua-about__card:nth-child(3),
+  .oua-about__grid > .oua-about__card:nth-child(5) {
+    align-self: flex-start !important;
+  }
+
+  .oua-about__grid > .oua-about__card:nth-child(2),
+  .oua-about__grid > .oua-about__card:nth-child(4) {
+    align-self: flex-end !important;
+  }
+
+  .oua-about__grid > .oua-about__card:nth-child(1) {
+    z-index: 5;
+  }
+
+  .oua-about__grid > .oua-about__card:nth-child(2) {
+    z-index: 4;
+  }
+
+  .oua-about__grid > .oua-about__card:nth-child(3) {
+    z-index: 3;
+  }
+
+  .oua-about__grid > .oua-about__card:nth-child(4) {
+    z-index: 2;
+  }
+
+  .oua-about__grid > .oua-about__card:nth-child(5) {
+    z-index: 1;
+  }
+
+  .oua-about__card--image img {
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
   .oua-footer {
     padding: 5.5rem 2rem 4rem;
   }
@@ -1402,6 +1645,71 @@ body.oua-lightbox-open {
   .oua-footer__watermark {
     margin-top: 4rem;
   }
+
+  .oua-footer {
+    padding: 4.25rem 5rem 3rem !important;
+    min-height: 100vh;
+  }
+
+  .oua-footer__inner {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr) !important;
+    column-gap: 4.5rem !important;
+    align-items: center !important;
+  }
+
+  .oua-footer__photo {
+    justify-content: flex-start !important;
+  }
+
+  .oua-footer__polaroid {
+    width: min(17.5rem, 100%) !important;
+    transform: rotate(-2.2deg) !important;
+  }
+
+  .oua-footer__content {
+    max-width: 34rem !important;
+  }
+
+  .oua-footer__title {
+    font-size: clamp(2.35rem, 4.2vw, 3.2rem) !important;
+    line-height: 1.02 !important;
+    max-width: 9ch !important;
+    margin-bottom: 1.35rem !important;
+  }
+
+  .oua-footer__body {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    row-gap: 1.35rem !important;
+  }
+
+  .oua-footer__text {
+    max-width: 32rem !important;
+    font-size: 0.98rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .oua-footer__meta {
+    gap: 0.55rem !important;
+  }
+
+  .oua-footer__meta a,
+  .oua-footer__meta p,
+  .oua-footer__meta span {
+    font-size: 0.95rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .oua-footer__watermark {
+    width: 100% !important;
+    margin: 3rem auto 0 !important;
+    text-align: right !important;
+    font-size: 0.62rem !important;
+    opacity: 0.65;
+  }
+
 }
 
 /* =========================================================
