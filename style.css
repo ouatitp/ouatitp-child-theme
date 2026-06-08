@@ -40,6 +40,7 @@ html {
 
 body {
   background: var(--color-bg);
+  color: var(--color-text);
 }
 
 *,
@@ -427,7 +428,7 @@ a.oua-btn--secondary:focus {
 }
 
 /* =========================================================
-   HERO - DESKTOP
+   HERO - DESKTOP BASE
 ========================================================= */
 .oua-hero {
   position: relative;
@@ -509,7 +510,7 @@ a.oua-btn--secondary:focus {
 }
 
 /* =========================================================
-   WORK - DESKTOP
+   WORK - DESKTOP BASE
 ========================================================= */
 .oua-work {
   position: relative;
@@ -637,7 +638,7 @@ a.oua-btn--secondary:focus {
 }
 
 /* =========================================================
-   PROCESS - DESKTOP
+   PROCESS - DESKTOP BASE
 ========================================================= */
 .oua-process {
   position: relative;
@@ -725,6 +726,7 @@ a.oua-btn--secondary:focus {
 .oua-process__step-number {
   display: inline-block;
   margin: 0 0 0.9rem;
+  color: var(--color-muted);
   font-size: 0.82rem;
   line-height: 1;
   font-weight: 600;
@@ -749,7 +751,7 @@ a.oua-btn--secondary:focus {
 }
 
 /* =========================================================
-   ABOUT - DESKTOP
+   ABOUT - DESKTOP BASE
 ========================================================= */
 .oua-about {
   position: relative;
@@ -889,7 +891,7 @@ a.oua-btn--secondary:focus {
 }
 
 /* =========================================================
-   FOOTER / CONTACT - DESKTOP
+   FOOTER / CONTACT - DESKTOP BASE
 ========================================================= */
 .oua-footer {
   position: relative;
@@ -1161,85 +1163,82 @@ body.oua-lightbox-open {
 }
 
 /* =========================================================
-   TABLET / SMALL DESKTOP BASE
+   TABLET LANDSCAPE / SMALL DESKTOP: 900-1199
 ========================================================= */
 @media (min-width: 900px) and (max-width: 1199px) and (orientation: landscape) {
   .oua-hero {
-    padding: 7.25rem 4rem 3rem !important;
-    min-height: 100vh !important;
-    overflow: visible !important;
+    min-height: 100vh;
+    padding: 7.25rem 4rem 3rem;
   }
 
   .oua-hero .wp-block-columns {
-    width: 100% !important;
-    max-width: 1180px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-
+    width: 100%;
+    max-width: 1180px;
     display: grid !important;
-    grid-template-columns: minmax(0, 30rem) minmax(0, 1fr) !important;
-    gap: 2.5rem !important;
-    align-items: center !important;
+    grid-template-columns: minmax(0, 30rem) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .oua-hero .wp-block-column {
+    width: auto !important;
+    flex-basis: auto !important;
   }
 
   .oua-hero__content {
-    max-width: 30rem !important;
+    position: relative;
+    top: auto;
+    max-width: 30rem;
+    transform: none;
   }
 
   .oua-hero__content-inner {
-    max-width: 30rem !important;
-    transform: none !important;
+    max-width: 30rem;
     opacity: 1 !important;
+    transform: none !important;
   }
 
   .oua-hero__eyebrow {
-    margin-bottom: 0.85rem !important;
-    font-size: 0.9rem !important;
+    margin-bottom: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .oua-hero__title {
-    max-width: 8.2ch !important;
-    font-size: clamp(3.1rem, 5.4vw, 4.15rem) !important;
-    line-height: 0.96 !important;
-    letter-spacing: -0.052em !important;
+    max-width: 8.2ch;
+    font-size: clamp(3.1rem, 5.4vw, 4.15rem);
+    line-height: 0.96;
+    letter-spacing: -0.052em;
   }
 
   .oua-hero__text {
-    max-width: 28rem !important;
-    margin-top: 1.35rem !important;
-    font-size: 1rem !important;
-    line-height: 1.58 !important;
+    max-width: 28rem;
+    margin-top: 1.35rem;
+    font-size: 1rem;
+    line-height: 1.58;
   }
 
   .oua-hero__art {
-    min-height: 0 !important;
-    height: auto !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    overflow: visible !important;
+    min-height: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: visible;
   }
 
   .oua-hero__art-inner {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
+    position: relative;
+    top: auto;
+    right: auto;
     width: min(39vw, 25rem) !important;
-    max-width: none !important;
-    margin: -2rem -0.5rem 0 auto !important;
-    transform: none !important;
+    max-width: none;
+    margin: -2rem -0.5rem 0 auto;
     opacity: 1 !important;
     filter: none !important;
-  }
-
-  .oua-hero__art-inner img {
-    display: block;
-    width: 100%;
-    height: auto;
+    transform: none !important;
   }
 
   .oua-work {
-    z-index: 2;
     padding: 6rem 2rem 7rem;
   }
 
@@ -1263,30 +1262,31 @@ body.oua-lightbox-open {
   }
 
   .oua-work__gallery,
-  .oua-work__grid {
+  .oua-work__grid,
+  .oua-work__gallery.is-layout-flex {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
     min-height: auto;
-    margin-top: 2.5rem;
+    margin-top: 2.75rem;
     pointer-events: auto;
   }
 
   .oua-work__item {
     position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
+    inset: auto;
     width: 100% !important;
+    max-width: none;
     opacity: 1 !important;
     transform: none !important;
-    z-index: auto !important;
+    z-index: auto;
   }
 
   .oua-work__item:hover {
-    z-index: auto !important;
+    z-index: auto;
   }
 
   .oua-work__item:hover img,
@@ -1296,433 +1296,257 @@ body.oua-lightbox-open {
     transition: none;
   }
 
-  .oua-work .oua-work__gallery,
-  .oua-work .oua-work__gallery.is-layout-flex {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 1rem !important;
-    width: 100% !important;
-    margin-top: 2.75rem !important;
-  }
-
-  .oua-work .oua-work__gallery > .oua-work__item {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-
-    width: 100% !important;
-    max-width: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    z-index: auto !important;
-  }
-
-  .oua-work .oua-work__gallery > .oua-work__item img,
-  .oua-work .oua-work__gallery > .oua-work__item figure,
-  .oua-work .oua-work__gallery > .oua-work__item .wp-block-image {
-    display: block;
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-
-  .oua-lightbox {
-    padding: 3.25rem 2rem 5.25rem !important;
-  }
-
-  .oua-lightbox__inner {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: calc(100vh - 8.5rem) !important;
-  }
-
-  .oua-lightbox__image {
-    display: block !important;
-    width: auto !important;
-    height: auto !important;
-
-    max-width: min(88vw, 58rem) !important;
-    max-height: calc(100vh - 9.75rem) !important;
-
-    object-fit: contain !important;
-  }
-
-  .oua-lightbox__nav {
-    bottom: 1.35rem !important;
-  }
-
   .oua-process {
-    padding: 8rem 2rem 7rem;
+    padding: 4.5rem 5rem 5rem;
   }
 
   .oua-process::before {
-    top: -1rem;
-    right: 50%;
-    width: min(30rem, 70vw);
-    height: min(30rem, 70vw);
-    background-size: contain;
-    background-position: center;
-    transform: translate(50%, 24px) scale(0.96);
+    position: relative;
+    inset: auto;
+    display: block;
+    width: 100vw;
+    height: 24.5rem;
+    margin: 0 0 1.75rem 50%;
+    background-size: 45% auto;
+    background-position: 60% top;
+    opacity: 1;
+    transform: translateX(-50%);
+    transition: none;
   }
 
   .oua-process.is-visible::before {
-    opacity: 0.22;
-    transform: translate(50%, 0) scale(1);
+    opacity: 1;
+    transform: translateX(-50%);
   }
 
   .oua-process__intro,
   .oua-process__steps {
-    width: min(100%, calc(100% - 32px));
+    width: 100%;
   }
 
   .oua-process__intro {
+    max-width: none;
     padding-bottom: 2rem;
   }
 
-  .oua-process__steps {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .oua-process__step-text {
-    max-width: 100%;
-  }
-
-  .oua-process {
-    padding: 4.5rem 5rem 5rem !important;
-  }
-
-.oua-process::before {
-    width: 100vw !important;
-    height: 24.5rem !important;
-
-    margin: 0 0 1.75rem 50% !important;
-    transform: translateX(-50%) !important;
-
-    background-size: 45% auto !important;
-    background-position: 60% top !important;
-
-    opacity: 1 !important;
-  }
-
-  .oua-process.is-visible::before {
-    opacity: 1 !important;
-    transform: translateX(-50%) !important;
-  }
-
-  .oua-process__intro,
-  .oua-process__steps {
-    width: 100% !important;
-  }
-
-  .oua-process__intro {
-    max-width: none !important;
-    padding-bottom: 2rem !important;
-  }
-
   .oua-process__title {
-    max-width: 11ch !important;
-    font-size: clamp(2.15rem, 4vw, 3rem) !important;
-    line-height: 1.02 !important;
+    max-width: 11ch;
+    font-size: clamp(2.15rem, 4vw, 3rem);
+    line-height: 1.02;
   }
 
   .oua-process__text {
-    max-width: 42rem !important;
+    max-width: 42rem;
   }
 
   .oua-process__steps {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 1.5rem !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
   .oua-process__step {
-    padding-top: 1.1rem !important;
+    padding-top: 1.1rem;
   }
 
   .oua-process__step-text {
-    max-width: 100% !important;
-    font-size: 0.95rem !important;
-    line-height: 1.55 !important;
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.55;
   }
 
   .oua-about {
-    padding: 5rem 2rem 5.5rem;
-  }
-
-  .oua-about__top,
-  .oua-about__closing,
-  .oua-footer__inner,
-  .oua-footer__watermark {
-    width: min(100%, calc(100% - 32px));
+    padding: 5rem 5rem 5.5rem;
   }
 
   .oua-about__top {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
+    gap: 4rem;
+    align-items: start;
   }
 
   .oua-about__intro {
-    position: relative;
-    top: auto;
-    max-width: 100%;
-  }
-
-  .oua-about__aside,
-  .oua-about__note {
-    max-width: 100%;
+    position: sticky;
+    top: 8rem;
+    max-width: 24rem;
   }
 
   .oua-about__title {
-    max-width: 9ch;
-    font-size: clamp(2.4rem, 6vw, 4rem);
-  }
-
-  .oua-about__card {
-    width: min(100%, 28rem);
-  }
-
-  .oua-about__card + .oua-about__card {
-    margin-top: -4rem;
-  }
-
-  .oua-about__card:nth-child(1),
-  .oua-about__card:nth-child(2),
-  .oua-about__card:nth-child(3),
-  .oua-about__card:nth-child(4),
-  .oua-about__card:nth-child(5) {
-    transform: none;
-  }
-
-  .oua-about {
-    padding: 5rem 5rem 5.5rem !important;
-  }
-
-  .oua-about__top {
-    width: 100% !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 24rem) minmax(0, 1fr) !important;
-    gap: 4rem !important;
-    align-items: start !important;
-  }
-
-  .oua-about__intro {
-    position: sticky !important;
-    top: 8rem !important;
-    max-width: 24rem !important;
-  }
-
-  .oua-about__title {
-    max-width: 8.8ch !important;
-    font-size: clamp(2.45rem, 4vw, 3.35rem) !important;
-    line-height: 1.02 !important;
-    letter-spacing: -0.04em !important;
+    max-width: 8.8ch;
+    font-size: clamp(2.45rem, 4vw, 3.35rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
   }
 
   .oua-about__text {
-    max-width: 24rem !important;
-    font-size: 0.98rem !important;
-    line-height: 1.62 !important;
+    max-width: 24rem;
+    font-size: 0.98rem;
+    line-height: 1.62;
   }
 
   .oua-about__aside {
-    margin-top: 0 !important;
-    overflow: visible !important;
+    margin-top: 0;
+    overflow: visible;
   }
 
+  .oua-about__grid,
   .oua-about__grid.is-layout-flex,
-  .oua-about__grid.wp-block-group.is-layout-flex,
-  .oua-about__grid {
+  .oua-about__grid.wp-block-group.is-layout-flex {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-
-    width: 100% !important;
-    max-width: 32rem !important;
-    margin: 0 auto !important;
-    gap: 0 !important;
-    overflow: visible !important;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 32rem;
+    margin: 0 auto;
+    gap: 0;
+    overflow: visible;
   }
 
   .oua-about__grid > .oua-about__card {
-    width: min(22rem, 100%) !important;
-    max-width: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    overflow: visible !important;
+    width: min(22rem, 100%);
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
   }
 
   .oua-about__grid > .oua-about__card + .oua-about__card {
-    margin-top: -3.6rem !important;
+    margin-top: -3.6rem;
   }
 
   .oua-about__grid > .oua-about__card:nth-child(1),
   .oua-about__grid > .oua-about__card:nth-child(3),
   .oua-about__grid > .oua-about__card:nth-child(5) {
-    align-self: flex-start !important;
+    align-self: flex-start;
   }
 
   .oua-about__grid > .oua-about__card:nth-child(2),
   .oua-about__grid > .oua-about__card:nth-child(4) {
-    align-self: flex-end !important;
+    align-self: flex-end;
   }
 
-  .oua-about__grid > .oua-about__card:nth-child(1) {
-    z-index: 5;
-  }
-
-  .oua-about__grid > .oua-about__card:nth-child(2) {
-    z-index: 4;
-  }
-
-  .oua-about__grid > .oua-about__card:nth-child(3) {
-    z-index: 3;
-  }
-
-  .oua-about__grid > .oua-about__card:nth-child(4) {
-    z-index: 2;
-  }
-
-  .oua-about__grid > .oua-about__card:nth-child(5) {
-    z-index: 1;
-  }
+  .oua-about__grid > .oua-about__card:nth-child(1) { z-index: 5; }
+  .oua-about__grid > .oua-about__card:nth-child(2) { z-index: 4; }
+  .oua-about__grid > .oua-about__card:nth-child(3) { z-index: 3; }
+  .oua-about__grid > .oua-about__card:nth-child(4) { z-index: 2; }
+  .oua-about__grid > .oua-about__card:nth-child(5) { z-index: 1; }
 
   .oua-about__card--image img {
-    width: 100% !important;
-    height: auto !important;
+    width: 100%;
+    height: auto;
     transform: none !important;
     box-shadow: none !important;
   }
 
   .oua-footer {
-    padding: 5.5rem 2rem 4rem;
+    min-height: 100vh;
+    padding: 4.25rem 5rem 3rem;
   }
 
   .oua-footer__inner {
-    grid-template-columns: 1fr;
-    justify-content: start;
-    column-gap: 0;
-    row-gap: 3rem;
+    width: 100%;
+    grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
+    column-gap: 4.5rem;
+    align-items: center;
+  }
+
+  .oua-footer__photo {
+    justify-content: flex-start;
   }
 
   .oua-footer__polaroid {
-    width: min(20rem, 100%);
-    transform: rotate(-1.5deg);
+    width: min(17.5rem, 100%);
+    transform: rotate(-2.2deg);
+  }
+
+  .oua-footer__content {
+    max-width: 34rem;
   }
 
   .oua-footer__title {
     max-width: 9ch;
-    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    margin-bottom: 1.35rem;
+    font-size: clamp(2.35rem, 4.2vw, 3.2rem);
+    line-height: 1.02;
   }
 
   .oua-footer__body {
     grid-template-columns: 1fr;
-    column-gap: 0;
-    row-gap: 1.5rem;
+    row-gap: 1.35rem;
   }
 
   .oua-footer__text {
-    max-width: 100%;
-  }
-
-  .oua-footer__meta a:hover,
-  .oua-footer__meta a:focus-visible {
-    opacity: 0.58;
-    outline: none;
-  }
-
-  .oua-footer__meta span {
-    color: var(--color-text);
-  }
-
-  .oua-footer__watermark {
-    margin-top: 4rem;
-  }
-
-  .oua-footer {
-    padding: 4.25rem 5rem 3rem !important;
-    min-height: 100vh;
-  }
-
-  .oua-footer__inner {
-    width: 100% !important;
-    display: grid !important;
-    grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr) !important;
-    column-gap: 4.5rem !important;
-    align-items: center !important;
-  }
-
-  .oua-footer__photo {
-    justify-content: flex-start !important;
-  }
-
-  .oua-footer__polaroid {
-    width: min(17.5rem, 100%) !important;
-    transform: rotate(-2.2deg) !important;
-  }
-
-  .oua-footer__content {
-    max-width: 34rem !important;
-  }
-
-  .oua-footer__title {
-    font-size: clamp(2.35rem, 4.2vw, 3.2rem) !important;
-    line-height: 1.02 !important;
-    max-width: 9ch !important;
-    margin-bottom: 1.35rem !important;
-  }
-
-  .oua-footer__body {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    row-gap: 1.35rem !important;
-  }
-
-  .oua-footer__text {
-    max-width: 32rem !important;
-    font-size: 0.98rem !important;
-    line-height: 1.62 !important;
+    max-width: 32rem;
+    font-size: 0.98rem;
+    line-height: 1.62;
   }
 
   .oua-footer__meta {
-    gap: 0.55rem !important;
+    gap: 0.55rem;
   }
 
   .oua-footer__meta a,
   .oua-footer__meta p,
   .oua-footer__meta span {
-    font-size: 0.95rem !important;
-    line-height: 1.45 !important;
+    font-size: 0.95rem;
+    line-height: 1.45;
   }
 
   .oua-footer__watermark {
-    width: 100% !important;
-    margin: 3rem auto 0 !important;
-    text-align: right !important;
-    font-size: 0.62rem !important;
+    width: 100%;
+    margin: 3rem auto 0;
+    text-align: right;
+    font-size: 0.62rem;
     opacity: 0.65;
   }
 
+  .oua-lightbox {
+    padding: 2rem 2rem 4.25rem;
+  }
+
+  .oua-lightbox__inner {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 6.75rem);
+  }
+
+  .oua-lightbox__image {
+    max-width: min(92vw, 62rem);
+    max-height: calc(100vh - 7.25rem);
+    object-fit: contain;
+  }
+
+  .oua-lightbox__nav {
+    top: auto;
+    bottom: 1.1rem;
+    transform: none;
+  }
+
+  .oua-lightbox__nav--prev {
+    left: calc(50% - 3.5rem);
+  }
+
+  .oua-lightbox__nav--next {
+    right: calc(50% - 3.5rem);
+  }
 }
 
 /* =========================================================
    TABLET PORTRAIT: 681-1024
 ========================================================= */
-@media (min-width: 681px) and (max-width: 1024px) {
+@media (min-width: 681px) and (max-width: 1024px) and (orientation: portrait) {
   .oua-nav {
     width: min(390px, calc(100% - 96px));
   }
 
   .oua-hero {
-    padding: 8rem 4rem 2rem;
     min-height: auto;
+    padding: 8rem 4rem 2rem;
     overflow: visible;
   }
 
@@ -1730,13 +1554,26 @@ body.oua-lightbox-open {
   .oua-hero .wp-block-columns {
     width: 100%;
     display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 2.25rem !important;
-    align-items: start !important;
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    align-items: start;
+  }
+
+  .oua-hero .wp-block-column {
+    width: 100% !important;
+    flex-basis: auto !important;
   }
 
   .oua-hero__content {
+    position: relative;
+    top: auto;
     max-width: 34rem;
+    transform: none;
+  }
+
+  .oua-hero__content-inner {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .oua-hero__title {
@@ -1756,17 +1593,22 @@ body.oua-lightbox-open {
   .oua-hero__art {
     display: flex;
     justify-content: flex-end;
-    max-height: 25rem;
+    min-height: 26rem;
+    height: auto;
     overflow: visible;
-    min-height: 26rem !important;
-    height: auto !important;
   }
 
   .oua-hero__art-inner {
+    position: relative;
+    top: auto;
+    right: auto;
     width: min(58vw, 31rem) !important;
     max-width: none;
-    margin: -1rem 2vw 0 auto !important;
+    margin: -1rem 2vw 0 auto;
     overflow: visible;
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
   }
 
   .oua-work {
@@ -1775,12 +1617,42 @@ body.oua-lightbox-open {
   }
 
   .oua-work__intro {
+    position: relative;
+    top: auto;
     margin-bottom: 3.25rem;
+    opacity: 1 !important;
+    transform: none;
+  }
+
+  .oua-work__intro-inner {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .oua-work__gallery,
   .oua-work__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
+    min-height: auto;
+    margin-top: 2rem;
+    pointer-events: auto;
+  }
+
+  .oua-work__item {
+    position: relative;
+    inset: auto;
+    width: 100% !important;
+    opacity: 1 !important;
+    transform: none !important;
+    z-index: auto;
+  }
+
+  .oua-work__item:hover img,
+  .oua-work__item img {
+    transform: none;
+    filter: none !important;
   }
 
   .oua-process {
@@ -1788,38 +1660,28 @@ body.oua-lightbox-open {
   }
 
   .oua-process::before {
-    content: "";
     position: relative;
     inset: auto;
     display: block;
-
     width: 100vw;
     max-width: none;
     height: 30rem;
-
     margin: 0 0 1.5rem 50%;
-    transform: translateX(-50%) !important;
-
-    background-image: url("assets/img/process-collage-01.webp");
-    background-repeat: no-repeat;
     background-size: 68% auto;
     background-position: center top;
-
     opacity: 1;
+    transform: translateX(-50%);
     transition: none;
-    pointer-events: none;
-    z-index: 0;
   }
 
   .oua-process.is-visible::before {
     opacity: 1;
-    transform: translateX(-50%) !important;
+    transform: translateX(-50%);
   }
 
   .oua-process__intro,
   .oua-process__steps {
-    position: relative;
-    z-index: 1;
+    width: 100%;
   }
 
   .oua-about {
@@ -1833,6 +1695,8 @@ body.oua-lightbox-open {
   }
 
   .oua-about__intro {
+    position: relative;
+    top: auto;
     max-width: 100%;
   }
 
@@ -1844,10 +1708,10 @@ body.oua-lightbox-open {
 
   .oua-about__title {
     max-width: 9.5ch;
+    margin: 0 0 1rem;
     font-size: clamp(2.25rem, 4.2vw, 3.1rem);
     line-height: 1.02;
     letter-spacing: -0.035em;
-    margin: 0 0 1rem;
   }
 
   .oua-about__text {
@@ -1860,16 +1724,16 @@ body.oua-lightbox-open {
     margin-top: 0.5rem;
   }
 
+  .oua-about__grid,
   .oua-about__grid.is-layout-flex,
   .oua-about__grid.wp-block-group.is-layout-flex {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-
+    flex-direction: column;
+    align-items: stretch;
     width: 100%;
     max-width: 40rem;
     margin: 0 auto;
-    gap: 0 !important;
+    gap: 0;
     overflow: visible;
   }
 
@@ -1883,45 +1747,29 @@ body.oua-lightbox-open {
     background: transparent;
     box-shadow: none;
     overflow: visible;
+    transform: none !important;
   }
 
   .oua-about__grid > .oua-about__card + .oua-about__card {
-    margin-top: -4.75rem !important;
+    margin-top: -4.75rem;
   }
 
-  .oua-about__grid > .oua-about__card:nth-child(1) {
+  .oua-about__grid > .oua-about__card:nth-child(1),
+  .oua-about__grid > .oua-about__card:nth-child(3),
+  .oua-about__grid > .oua-about__card:nth-child(5) {
     align-self: flex-start;
-    z-index: 5;
   }
 
-  .oua-about__grid > .oua-about__card:nth-child(2) {
-    align-self: flex-end;
-    z-index: 4;
-  }
-
-  .oua-about__grid > .oua-about__card:nth-child(3) {
-    align-self: flex-start;
-    z-index: 3;
-  }
-
+  .oua-about__grid > .oua-about__card:nth-child(2),
   .oua-about__grid > .oua-about__card:nth-child(4) {
     align-self: flex-end;
-    z-index: 2;
   }
 
-  .oua-about__grid > .oua-about__card:nth-child(5) {
-    align-self: flex-start;
-    z-index: 1;
-  }
-
-  .oua-about__grid > .oua-about__card,
-  .oua-about__grid > .oua-about__card:nth-child(1),
-  .oua-about__grid > .oua-about__card:nth-child(2),
-  .oua-about__grid > .oua-about__card:nth-child(3),
-  .oua-about__grid > .oua-about__card:nth-child(4),
-  .oua-about__grid > .oua-about__card:nth-child(5) {
-    transform: none !important;
-  }
+  .oua-about__grid > .oua-about__card:nth-child(1) { z-index: 5; }
+  .oua-about__grid > .oua-about__card:nth-child(2) { z-index: 4; }
+  .oua-about__grid > .oua-about__card:nth-child(3) { z-index: 3; }
+  .oua-about__grid > .oua-about__card:nth-child(4) { z-index: 2; }
+  .oua-about__grid > .oua-about__card:nth-child(5) { z-index: 1; }
 
   .oua-about__card--image,
   .oua-about__card--image figure,
@@ -1949,7 +1797,6 @@ body.oua-lightbox-open {
 
   .oua-footer__inner {
     width: 100%;
-    display: grid !important;
     grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr);
     column-gap: 4rem;
     align-items: center;
@@ -1969,8 +1816,8 @@ body.oua-lightbox-open {
   }
 
   .oua-footer__title {
-    font-size: clamp(2.4rem, 5vw, 3.4rem);
     max-width: 8ch;
+    font-size: clamp(2.4rem, 5vw, 3.4rem);
   }
 
   .oua-footer__watermark {
@@ -1980,8 +1827,8 @@ body.oua-lightbox-open {
   }
 
   .oua-lightbox {
-    padding: 4.5rem 2rem 6rem;
     align-items: center;
+    padding: 4.5rem 2rem 6rem;
   }
 
   .oua-lightbox__inner {
@@ -2027,7 +1874,6 @@ body.oua-lightbox-open {
     top: 1.25rem;
     right: 1.25rem;
   }
-
 }
 
 /* =========================================================
@@ -2038,9 +1884,17 @@ body.oua-lightbox-open {
     scroll-padding-top: 72px;
   }
 
+  body {
+    overflow-x: hidden;
+  }
+
   .oua-nav {
     top: 1.25rem;
-    width: calc(100% - 2rem);
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    max-width: none;
+    transform: none;
   }
 
   .oua-logo {
@@ -2048,6 +1902,7 @@ body.oua-lightbox-open {
   }
 
   .oua-hero {
+    min-height: auto;
     padding: 6.4rem 1.5rem 3.25rem;
     overflow: hidden;
   }
@@ -2055,19 +1910,36 @@ body.oua-lightbox-open {
   .oua-hero__inner,
   .oua-hero .wp-block-columns {
     width: 100%;
-    display: grid;
+    display: grid !important;
     grid-template-columns: 1fr;
     gap: 1.1rem;
+    margin: 0;
   }
 
-  .oua-hero__content,
-  .oua-hero__content-inner {
+  .oua-hero .wp-block-column {
+    width: 100% !important;
+    flex-basis: auto !important;
+    min-width: 0;
+  }
+
+  .oua-hero__content {
+    position: relative;
+    top: auto;
     max-width: 100%;
+    transform: none;
+  }
+
+  .oua-hero__content-inner {
+    width: 100%;
+    max-width: 100%;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .oua-hero__eyebrow {
-    margin-bottom: 0.85rem;
+    margin: 0 0 0.85rem;
     font-size: 0.86rem;
+    line-height: 1.4;
   }
 
   .oua-hero__title {
@@ -2089,28 +1961,54 @@ body.oua-lightbox-open {
   }
 
   .oua-hero__art {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 15.5rem;
+    height: auto;
     overflow: visible;
   }
 
   .oua-hero__art-inner {
-    width: min(100%, 16.5rem);
-    max-width: 16.5rem;
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(100%, 17.5rem) !important;
+    max-width: 17.5rem;
     margin: -1.25rem auto 0;
+    opacity: 1 !important;
+    filter: none !important;
     transform: scale(1.2) !important;
     transform-origin: center center;
+  }
+
+  .oua-hero__art-inner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
   }
 
   .oua-work {
     padding: 3rem 1.5rem 6rem;
   }
 
-  .oua-work__intro {
+  .oua-work__intro,
+  .oua-work__intro-inner {
+    position: relative;
+    top: auto;
+    max-width: 100%;
     margin: 0 0 2rem;
     text-align: left;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .oua-work__title {
+    max-width: 11ch;
     font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.03;
   }
 
   .oua-work__text {
@@ -2119,10 +2017,35 @@ body.oua-lightbox-open {
   }
 
   .oua-work__gallery,
-  .oua-work__grid {
+  .oua-work__grid,
+  .oua-work__gallery.is-layout-flex {
+    position: relative;
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.9rem;
+    width: 100%;
+    min-height: auto;
     margin-top: 1.75rem;
+    pointer-events: auto;
+  }
+
+  .oua-work__item {
+    position: relative;
+    inset: auto;
+    width: 100% !important;
+    max-width: none;
+    opacity: 1 !important;
+    transform: none !important;
+    z-index: auto;
+  }
+
+  .oua-work__item:hover img,
+  .oua-work__item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: none;
+    filter: none !important;
   }
 
   .oua-process {
@@ -2131,22 +2054,17 @@ body.oua-lightbox-open {
   }
 
   .oua-process::before {
-    content: "";
     position: relative;
     inset: auto;
     display: block;
     width: 100vw;
     height: 22rem;
     margin: 0 0 0.75rem 50%;
-    background-image: url("assets/img/process-collage-01.webp");
-    background-repeat: no-repeat;
     background-size: 96vw auto;
     background-position: top center;
     opacity: 1;
     transform: translateX(-50%);
     transition: none;
-    pointer-events: none;
-    z-index: 0;
   }
 
   .oua-process.is-visible::before {
@@ -2168,6 +2086,7 @@ body.oua-lightbox-open {
   .oua-process__title {
     max-width: none;
     font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.03;
   }
 
   .oua-process__text,
@@ -2175,13 +2094,25 @@ body.oua-lightbox-open {
     max-width: 100%;
   }
 
+  .oua-process__steps {
+    display: block;
+  }
+
   .oua-about {
     padding: 3rem 1.5rem 5rem;
   }
 
-  .oua-about__top,
-  .oua-about__closing {
+  .oua-about__top {
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .oua-about__intro {
+    position: relative;
+    top: auto;
+    max-width: 100%;
   }
 
   .oua-about__title {
@@ -2199,36 +2130,41 @@ body.oua-lightbox-open {
     margin-bottom: 1.5rem;
   }
 
-  .oua-about__grid {
-    display: grid;
-    grid-template-columns: 1fr;
+  .oua-about__grid,
+  .oua-about__grid.is-layout-flex,
+  .oua-about__grid.wp-block-group.is-layout-flex {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
     gap: 0;
-    justify-items: center;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
     overflow: visible;
   }
 
-  .oua-about__card {
+  .oua-about__grid > .oua-about__card {
     width: 100%;
     max-width: 27rem;
     margin-left: auto;
     margin-right: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none !important;
   }
 
-  .oua-about__card + .oua-about__card {
+  .oua-about__grid > .oua-about__card + .oua-about__card {
     margin-top: -2.6rem;
   }
 
-  .oua-about__card:nth-child(1),
-  .oua-about__card:nth-child(2),
-  .oua-about__card:nth-child(3),
-  .oua-about__card:nth-child(4),
-  .oua-about__card:nth-child(5) {
-    transform: none;
-  }
-
   .oua-about__card--image img {
+    width: 100%;
+    height: auto;
     transform: scale(1.06) !important;
     transform-origin: center center;
+    box-shadow: none !important;
   }
 
   .oua-about__closing {
@@ -2239,13 +2175,15 @@ body.oua-lightbox-open {
     padding: 3rem 1.5rem 3rem;
   }
 
-  .oua-footer__inner,
-  .oua-footer__watermark {
+  .oua-footer__inner {
     width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr;
+    row-gap: 2.75rem;
   }
 
-  .oua-footer__inner {
-    row-gap: 2.75rem;
+  .oua-footer__watermark {
+    width: 100%;
   }
 
   .oua-footer__photo {
@@ -2273,6 +2211,8 @@ body.oua-lightbox-open {
   }
 
   .oua-footer__body {
+    display: grid !important;
+    grid-template-columns: 1fr;
     row-gap: 1.75rem;
   }
 
@@ -2331,5 +2271,86 @@ body.oua-lightbox-open {
   .oua-lightbox__nav--next:hover,
   .oua-lightbox__nav--next:focus-visible {
     transform: translateX(2px);
+  }
+}
+
+/* =========================================================
+   GLOBAL VIEWPORT LOCK + NAV POSITION SAFETY
+========================================================= */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+}
+
+.site,
+.site-content,
+.content-area,
+.inside-article,
+.entry-content {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* fallback for browsers that do not fully support overflow: clip */
+@supports not (overflow: clip) {
+  .site,
+  .site-content,
+  .content-area,
+  .inside-article,
+  .entry-content {
+    overflow-x: hidden;
+  }
+}
+
+/* Fixed nav should never touch / escape the viewport top */
+.oua-nav {
+  top: calc(env(safe-area-inset-top, 0px) + 1.25rem);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 2rem);
+}
+
+/* Prevent WP wrappers from creating accidental horizontal overflow */
+.wp-block-columns,
+.wp-block-column,
+.gb-container,
+.gb-inside-container {
+  max-width: 100%;
+}
+
+/* Sections that use 100vw pseudo-elements should not create page-level horizontal scroll */
+.oua-hero,
+.oua-work,
+.oua-process,
+.oua-about,
+.oua-footer {
+  max-width: 100%;
+}
+
+/* =========================================================
+   CUSTOM NAV — FIXED VISUAL WIDTH
+========================================================= */
+
+.oua-nav {
+  left: 50% !important;
+  right: auto !important;
+  width: 390px !important;
+  max-width: 390px !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Safety only for ultra-narrow screens below current tested range */
+@media (max-width: 360px) {
+  .oua-nav {
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
   }
 }
