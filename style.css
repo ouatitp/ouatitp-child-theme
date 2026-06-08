@@ -2280,9 +2280,8 @@ body.oua-lightbox-open {
 
 html,
 body {
-  width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -2295,16 +2294,12 @@ body {
 .inside-article,
 .entry-content {
   max-width: 100%;
-  overflow-x: clip;
 }
 
 /* fallback for browsers that do not fully support overflow: clip */
 @supports not (overflow: clip) {
-  .site,
-  .site-content,
-  .content-area,
-  .inside-article,
-  .entry-content {
+  html,
+  body {
     overflow-x: hidden;
   }
 }
