@@ -625,16 +625,16 @@ a.oua-btn--secondary:focus {
   transform: scale(1.22);
 }
 
-.oua-work__item--01 { top: 24rem; left: 10%; width: 9.5rem; z-index: 3; }
-.oua-work__item--02 { top: 33rem; left: 14%; width: 9rem; z-index: 2; opacity: 0.76; }
-.oua-work__item--03 { top: 30rem; left: 38%; width: 11rem; z-index: 1; opacity: 0.18; }
-.oua-work__item--04 { top: 42rem; right: 24%; width: 8.5rem; z-index: 3; }
-.oua-work__item--05 { top: 35rem; right: 12%; width: 8.25rem; z-index: 2; opacity: 0.68; }
-.oua-work__item--06 { top: 51rem; right: 8%; width: 7.75rem; z-index: 1; opacity: 0.16; }
+.oua-work__item--01 { top: 24rem; left: 10%; width: 12.35rem; z-index: 3; opacity: 1; }
+.oua-work__item--02 { top: 33rem; left: 14%; width: 11.7rem; z-index: 2; opacity: 1; }
+.oua-work__item--03 { top: 30rem; left: 38%; width: 14.3rem; z-index: 1; opacity: 1; }
+.oua-work__item--04 { top: 42rem; right: 24%; width: 11.05rem; z-index: 3; opacity: 1; }
+.oua-work__item--05 { top: 35rem; right: 12%; width: 10.75rem; z-index: 2; opacity: 1; }
+.oua-work__item--06 { top: 51rem; right: 8%; width: 10.1rem; z-index: 1; opacity: 1; }
 
 .oua-work__item--03 img,
 .oua-work__item--06 img {
-  filter: saturate(0.88) brightness(1.05);
+  filter: none;
 }
 
 /* =========================================================
